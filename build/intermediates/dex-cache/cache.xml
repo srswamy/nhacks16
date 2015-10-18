@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="C:\Users\Sagar\Documents\Projects\MaterialDesignTest\app\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\23.1.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="3f151e49c316a5ab2c065969a3b3b55ef9b393fc">
+        <dex dex="C:\Users\Sagar\Documents\Projects\MaterialDesignTest\app\build\intermediates\pre-dexed\debug\classes-1c8699d8698a08d68814d93ae9489bfca8ee97a3.jar" />
+    </item>
+    <item
+        jar="C:\Users\Sagar\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\23.1.0\support-annotations-23.1.0.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="92e3fc113ec3ee36b64603a38857b95700025633">
+        <dex dex="C:\Users\Sagar\Documents\Projects\MaterialDesignTest\app\build\intermediates\pre-dexed\debug\support-annotations-23.1.0-11607dc1b4bb474b91458d5291596d22051963c7.jar" />
+    </item>
+    <item
+        jar="C:\Users\Sagar\Documents\Projects\MaterialDesignTest\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.0.1\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="d86429b0f0b3f3cafbeb78dda1b9d89119ccb05d">
+        <dex dex="C:\Users\Sagar\Documents\Projects\MaterialDesignTest\app\build\intermediates\pre-dexed\debug\classes-af576c0699cdc63c5f6289f06b5ae0bff7119a5c.jar" />
+    </item>
+    <item
+        jar="C:\Users\Sagar\Documents\Projects\MaterialDesignTest\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.0\jars\libs\internal_impl-23.1.0.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="8716243bf04bae8d6c9ca94d27b9a9be7236f0a3">
+        <dex dex="C:\Users\Sagar\Documents\Projects\MaterialDesignTest\app\build\intermediates\pre-dexed\debug\internal_impl-23.1.0-0e74f478f75da77abc14130a27e4baa676a5cb85.jar" />
+    </item>
+    <item
+        jar="C:\Users\Sagar\Documents\Projects\MaterialDesignTest\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="ddde541c289c8b816a8f8fd6c325d80788c522a6">
+        <dex dex="C:\Users\Sagar\Documents\Projects\MaterialDesignTest\app\build\intermediates\pre-dexed\debug\classes-d88bc959b5f20b8c9af8970ee2fbe8ef39d17089.jar" />
+    </item>
+
+</items>
