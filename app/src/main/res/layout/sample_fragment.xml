@@ -4,12 +4,13 @@
     android:background="#E0E0E0"
     android:orientation="vertical">
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recyclerView"
+    <TextView
+        android:id="@+id/tv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="5dp"/>
+        android:gravity="center|top"
+        android:text="The page number is 1"
+        android:textColor="@color/primaryColor"
+        android:textSize="20sp" />
 
 </LinearLayout>
-
-

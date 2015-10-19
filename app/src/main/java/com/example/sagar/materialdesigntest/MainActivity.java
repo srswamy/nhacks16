@@ -68,8 +68,10 @@ public class MainActivity extends ActionBarActivity {
 
         @Override
         public Fragment getItem(int i) {
-            MyFragment myFragment = MyFragment.getInstance(i);
-            return myFragment;
+            if(i == 0){
+                return MyFragment.getInstance(i);
+            }
+            return SampleFragment.getInstance(i);
         }
 
         @Override
