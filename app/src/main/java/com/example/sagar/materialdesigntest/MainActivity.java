@@ -11,6 +11,11 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.example.sagar.materialdesigntest.Fragments.MyFragment;
+import com.example.sagar.materialdesigntest.Fragments.NavigationDrawerFragment;
+import com.example.sagar.materialdesigntest.Fragments.SampleFragment;
+import com.example.sagar.materialdesigntest.ui.SlidingTabLayout;
+
 public class MainActivity extends ActionBarActivity {
 
     private Toolbar toolbar;

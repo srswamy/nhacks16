@@ -15,7 +15,7 @@
             android:id="@+id/app_bar"
             layout="@layout/app_bar" />
 
-        <com.example.sagar.materialdesigntest.SlidingTabLayout
+        <com.example.sagar.materialdesigntest.ui.SlidingTabLayout
             android:id="@+id/tabs"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -31,7 +31,7 @@
 
     <fragment
         android:id="@+id/fragment_navigation_drawer"
-        android:name="com.example.sagar.materialdesigntest.NavigationDrawerFragment"
+        android:name="com.example.sagar.materialdesigntest.Fragments.NavigationDrawerFragment"
         android:layout_width="280dp"
         android:layout_height="match_parent"
         android:layout_gravity="start"

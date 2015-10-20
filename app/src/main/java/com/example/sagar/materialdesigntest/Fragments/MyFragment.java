@@ -1,4 +1,4 @@
-package com.example.sagar.materialdesigntest;
+package com.example.sagar.materialdesigntest.Fragments;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -8,9 +8,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
-import org.w3c.dom.Text;
+import com.example.sagar.materialdesigntest.R;
+import com.example.sagar.materialdesigntest.Adapters.RecyclerViewAdapter;
+import com.example.sagar.materialdesigntest.Objects.RecyclerViewRow;
 
 import java.util.ArrayList;
 import java.util.List;

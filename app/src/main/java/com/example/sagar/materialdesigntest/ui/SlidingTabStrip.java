@@ -1,4 +1,4 @@
-package com.example.sagar.materialdesigntest;
+package com.example.sagar.materialdesigntest.ui;
 
 /**
  * Created by Sagar on 10/17/2015.

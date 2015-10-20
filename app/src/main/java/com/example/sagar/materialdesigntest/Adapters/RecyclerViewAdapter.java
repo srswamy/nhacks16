@@ -1,4 +1,4 @@
-package com.example.sagar.materialdesigntest;
+package com.example.sagar.materialdesigntest.Adapters;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -7,7 +7,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import com.example.sagar.materialdesigntest.R;
+import com.example.sagar.materialdesigntest.Objects.RecyclerViewRow;
 
 import java.util.Collections;
 import java.util.List;
@@ -19,13 +21,14 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     private LayoutInflater inflater;
     List<RecyclerViewRow> data = Collections.emptyList();
     Context context;
-    public RecyclerViewAdapter(Context context, List<RecyclerViewRow> data){
+
+    public RecyclerViewAdapter(Context context, List<RecyclerViewRow> data) {
         inflater = LayoutInflater.from(context);
         this.data = data;
         this.context = context;
     }
 
-    public void delete(int pos){
+    public void delete(int pos) {
         data.remove(pos);
         notifyItemRemoved(pos);
     }
@@ -53,6 +56,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         TextView tv;
         ImageView iv;
         ImageView remove;
+
         public MyViewHolder(View itemView) {
             super(itemView);
 
@@ -66,7 +70,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             tv = (TextView) itemView.findViewById(R.id.textView);
             iv = (ImageView) itemView.findViewById(R.id.image);
             remove = (ImageView) itemView.findViewById(R.id.remove_img);
-
             remove.setOnClickListener(this);
         }
 
