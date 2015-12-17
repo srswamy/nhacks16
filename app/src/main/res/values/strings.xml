@@ -14,4 +14,10 @@
         <item>TAB 2</item>
         <item>TAB 3</item>
     </string-array>
+
+    <string-array name="nav_items">
+        <item>Home</item>
+        <item>Two</item>
+        <item>Three</item>
+    </string-array>
 </resources>
