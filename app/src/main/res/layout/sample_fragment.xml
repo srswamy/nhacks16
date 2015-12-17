@@ -10,7 +10,7 @@
         android:layout_height="wrap_content"
         android:gravity="center|top"
         android:text="The page number is 1"
-        android:textColor="@color/primaryColor"
+        android:textColor="@color/primaryText"
         android:textSize="20sp" />
 
 </LinearLayout>
