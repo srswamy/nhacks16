@@ -19,6 +19,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.nhacks.share.Adapters.DrawerRecyclerViewAdapter;
+import com.nhacks.share.Fragments.AllBooksFragment;
 import com.nhacks.share.Fragments.MyFragment;
 import com.nhacks.share.Fragments.SampleFragment;
 import com.nhacks.share.Fragments.SlidingTabsFragment;
@@ -90,7 +91,7 @@ public class MainActivity extends ActionBarActivity {
 
         if(savedInstanceState == null){
             getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.fragment, MyFragment.getInstance(0))
+                    .replace(R.id.fragment, AllBooksFragment.getInstance(0))
                     .commit();
         }
 

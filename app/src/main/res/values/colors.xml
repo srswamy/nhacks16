@@ -12,4 +12,8 @@
     <color name="textColor">#FFFFFF</color>
     <color name="iconColor">#FFFFFF</color>
 
+    <color name="primaryPressed">#7986CB</color>
+    <color name="primaryFocused">#7986CB</color>
+    <color name="primary">#7986CB</color>
+
 </resources>

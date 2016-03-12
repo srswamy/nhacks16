@@ -29,6 +29,10 @@
             android:name=".MainActivity"
             android:label="@string/title_activity_main" >
         </activity>
+        <activity
+            android:name=".AddBookForRentActivity"
+            android:label="@string/title_activity_add_book_for_rent" >
+        </activity>
 
     </application>
 

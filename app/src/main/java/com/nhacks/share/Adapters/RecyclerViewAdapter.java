@@ -43,8 +43,9 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     @Override
     public void onBindViewHolder(MyViewHolder myViewHolder, int i) {
         RecyclerViewRow current = data.get(i);
-        myViewHolder.tv.setText(current.title);
-        myViewHolder.iv.setImageResource(current.iconId);
+        myViewHolder.tv.setText(current.getTitle());
+        myViewHolder.categoy.setText(current.getCategory());
+        //myViewHolder.iv.setImageResource(current.iconId);
     }
 
     @Override
@@ -52,8 +53,60 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         return data.size();
     }
 
+    public RecyclerViewRow removeItem(int position) {
+        final RecyclerViewRow model = data.remove(position);
+        notifyItemRemoved(position);
+        return model;
+    }
+
+    public void addItem(int position, RecyclerViewRow model) {
+        data.add(position, model);
+        notifyItemInserted(position);
+    }
+
+    public void moveItem(int fromPosition, int toPosition) {
+        final RecyclerViewRow model = data.remove(fromPosition);
+        data.add(toPosition, model);
+        notifyItemMoved(fromPosition, toPosition);
+    }
+
+    public void animateTo(List<RecyclerViewRow> models) {
+        applyAndAnimateRemovals(models);
+        applyAndAnimateAdditions(models);
+        applyAndAnimateMovedItems(models);
+    }
+
+    private void applyAndAnimateRemovals(List<RecyclerViewRow> newModels) {
+        for (int i = data.size() - 1; i >= 0; i--) {
+            final RecyclerViewRow model = data.get(i);
+            if (!newModels.contains(model)) {
+                removeItem(i);
+            }
+        }
+    }
+
+    private void applyAndAnimateAdditions(List<RecyclerViewRow> newModels) {
+        for (int i = 0, count = newModels.size(); i < count; i++) {
+            final RecyclerViewRow model = newModels.get(i);
+            if (!data.contains(model)) {
+                addItem(i, model);
+            }
+        }
+    }
+
+    private void applyAndAnimateMovedItems(List<RecyclerViewRow> newModels) {
+        for (int toPosition = newModels.size() - 1; toPosition >= 0; toPosition--) {
+            final RecyclerViewRow model = newModels.get(toPosition);
+            final int fromPosition = data.indexOf(model);
+            if (fromPosition >= 0 && fromPosition != toPosition) {
+                moveItem(fromPosition, toPosition);
+            }
+        }
+    }
+
     class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView tv;
+        TextView categoy;
         ImageView iv;
         ImageView remove;
 
@@ -68,7 +121,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             });
 
             tv = (TextView) itemView.findViewById(R.id.textView);
-            iv = (ImageView) itemView.findViewById(R.id.image);
+            categoy = (TextView) itemView.findViewById(R.id.category);
+            //iv = (ImageView) itemView.findViewById(R.id.image);
             remove = (ImageView) itemView.findViewById(R.id.remove_img);
             remove.setOnClickListener(this);
         }
