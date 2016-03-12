@@ -9,6 +9,8 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -16,6 +18,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import com.nhacks.share.Adapters.DrawerRecyclerViewAdapter;
 import com.nhacks.share.Fragments.MyFragment;
 import com.nhacks.share.Fragments.SampleFragment;
 import com.nhacks.share.Fragments.SlidingTabsFragment;
@@ -30,11 +33,14 @@ public class MainActivity extends ActionBarActivity {
     private Toolbar toolbar;
     private ViewPager mPager;
     private SlidingTabLayout mTabs;
-    ListView mDrawerList;
+    RecyclerView mDrawerList;
     private DrawerLayout mDrawerLayout;
-    private DrawerListAdapter mAdapter;
+    private DrawerRecyclerViewAdapter mAdapter;
+    DrawerLayout Drawer;
     private ActionBarDrawerToggle mDrawerToggle;
     String[] names;
+    String name = "Sagar Dave";
+    String email = "davesagar2012@gmail.com";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,9 +50,17 @@ public class MainActivity extends ActionBarActivity {
 
         setSupportActionBar(toolbar);
 
-        mDrawerList = (ListView) findViewById(R.id.drawerList);
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            String value = extras.getString("new_variable_name");
+        }
+
+        mDrawerList = (RecyclerView) findViewById(R.id.drawerList);
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-        mAdapter = new DrawerListAdapter(this, R.layout.drawer_row, getData());
+        mAdapter = new DrawerRecyclerViewAdapter(getData(), name, email, 0, getSupportFragmentManager(), getSupportActionBar(), names, mDrawerLayout);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        mDrawerList.setLayoutManager(layoutManager);
 
         mDrawerList.setAdapter(mAdapter);
 
@@ -74,24 +88,9 @@ public class MainActivity extends ActionBarActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle("Home");
 
-        mDrawerList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                final int pos = position;
-               /* Closing the drawer */
-                mDrawerLayout.closeDrawer(mDrawerList);
-                new Handler().postDelayed(new Runnable() {
-                    public void run() {
-                        /* Replace fragment content */
-                        updateFragment(pos);
-                    }
-                }, 200);
-            }
-        });
-
         if(savedInstanceState == null){
             getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.fragment, SlidingTabsFragment.getInstance(0))
+                    .replace(R.id.fragment, MyFragment.getInstance(0))
                     .commit();
         }
 

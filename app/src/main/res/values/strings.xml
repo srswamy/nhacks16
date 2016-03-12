@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Share</string>
     <string name="title_activity_main">MainActivity</string>
+    <string name="title_login_main">LoginActivity</string>
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
@@ -15,9 +16,14 @@
         <item>TAB 3</item>
     </string-array>
 
+    <string name="connect_with_facebook">Login</string>
+
     <string-array name="nav_items">
         <item>Home</item>
         <item>Two</item>
         <item>Three</item>
     </string-array>
+
+    <string name="facebook_app_id">1689375318018475</string>
+
 </resources>

@@ -19,11 +19,15 @@ import java.util.List;
 public class DrawerListAdapter extends ArrayAdapter<DrawerRow> {
     Context context;
     List<DrawerRow> listItems;
+    String email;
+    String name;
 
     public DrawerListAdapter(Context context, int resource, List<DrawerRow> listItems) {
         super(context, resource);
         this.context = context;
         this.listItems = listItems;
+        this.name = name;
+        this.email = email;
     }
 
     @Override
