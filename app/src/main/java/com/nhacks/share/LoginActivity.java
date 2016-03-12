@@ -3,6 +3,7 @@ package com.nhacks.share;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.support.v7.app.ActionBarActivity;
@@ -35,7 +36,7 @@ public class LoginActivity extends Activity {
     private LoginButton loginButton;
     private TextView btnLogin;
     private ProgressDialog progressDialog;
-
+    public static final String MY_PREFS_NAME = "MyPrefsFile";
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -83,6 +84,7 @@ public class LoginActivity extends Activity {
                                         intent.putExtra("user_facebook_id", facebookID);
                                         intent.putExtra("user_email", email);
                                         intent.putExtra("user_name", name);
+                                        addToSharedPref(name, email, facebookID);
                                         startActivity(intent);
                                         finish();
 
@@ -94,6 +96,16 @@ public class LoginActivity extends Activity {
                         parameters.putString("fields", "id,name,email,gender, birthday");
                         request.setParameters(parameters);
                         request.executeAsync();
+                    }
+
+                    public void addToSharedPref(String name, String email, String id){
+
+                        SharedPreferences.Editor editor = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE).edit();;
+
+                        editor.putString("name_key", name);
+                        editor.putString("email_key", email);
+                        editor.putString("id_key", id);
+                        editor.commit();
                     }
 
                     @Override
@@ -203,6 +215,7 @@ public class LoginActivity extends Activity {
                             intent.putExtra("user_facebook_id", facebookID);
                             intent.putExtra("user_email", email);
                             intent.putExtra("user_name", name);
+                            addToSharedPref(name, email, facebookID);
                             startActivity(intent);
                             finish();
 
@@ -214,6 +227,15 @@ public class LoginActivity extends Activity {
             parameters.putString("fields", "id,name,email,gender, birthday");
             request.setParameters(parameters);
             request.executeAsync();
+        }
+
+        public void addToSharedPref(String name, String email, String id){
+            SharedPreferences.Editor editor = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE).edit();;
+
+            editor.putString("name_key", name);
+            editor.putString("email_key", email);
+            editor.putString("id_key", id);
+            editor.commit();
         }
 
         @Override

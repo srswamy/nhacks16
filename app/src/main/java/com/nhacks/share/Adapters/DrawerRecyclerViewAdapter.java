@@ -1,5 +1,6 @@
 package com.nhacks.share.Adapters;
 
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Handler;
 import android.support.v4.app.Fragment;

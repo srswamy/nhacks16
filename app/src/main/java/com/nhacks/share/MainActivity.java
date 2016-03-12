@@ -1,5 +1,6 @@
 package com.nhacks.share;
 
+import android.content.SharedPreferences;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -42,20 +43,29 @@ public class MainActivity extends ActionBarActivity {
     String[] names;
     String name = "";
     String email = "";
+    String facebookId = "";
+    public static final String MY_PREFS_NAME = "MyPrefsFile";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         names = getResources().getStringArray(R.array.nav_items);
         toolbar = (Toolbar) findViewById(R.id.app_bar);
+        SharedPreferences sharedpreferences = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE);
 
         setSupportActionBar(toolbar);
 
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
-            String value = extras.getString("new_variable_name");
+            facebookId = extras.getString("user_facebook_id");
             email = extras.getString("user_email");
             name = extras.getString("user_name");
+        }
+        else{
+            name = sharedpreferences.getString("name_key", "");
+            email = sharedpreferences.getString("email_key", "");
+            facebookId = sharedpreferences.getString("id_key", "");
         }
 
         mDrawerList = (RecyclerView) findViewById(R.id.drawerList);
@@ -96,8 +106,6 @@ public class MainActivity extends ActionBarActivity {
                     .replace(R.id.fragment, AllBooksFragment.getInstance(0))
                     .commit();
         }
-
-
     }
 
     @Override
