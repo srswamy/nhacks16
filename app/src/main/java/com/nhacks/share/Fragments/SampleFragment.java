@@ -1,4 +1,4 @@
-package com.example.sagar.materialdesigntest.Fragments;
+package com.nhacks.share.Fragments;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -8,7 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.example.sagar.materialdesigntest.R;
+import com.nhacks.share.R;
 
 /**
  * Created by SagarkumarDave on 10/19/2015.

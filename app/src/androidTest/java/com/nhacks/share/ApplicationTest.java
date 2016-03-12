@@ -1,4 +1,4 @@
-package com.example.sagar.materialdesigntest;
+package com.nhacks.share;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

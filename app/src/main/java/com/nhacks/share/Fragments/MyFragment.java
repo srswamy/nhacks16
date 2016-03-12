@@ -1,4 +1,4 @@
-package com.example.sagar.materialdesigntest.Fragments;
+package com.nhacks.share.Fragments;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -9,9 +9,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.sagar.materialdesigntest.R;
-import com.example.sagar.materialdesigntest.Adapters.RecyclerViewAdapter;
-import com.example.sagar.materialdesigntest.Objects.RecyclerViewRow;
+import com.nhacks.share.Adapters.RecyclerViewAdapter;
+import com.nhacks.share.Objects.RecyclerViewRow;
+import com.nhacks.share.R;
 
 import java.util.ArrayList;
 import java.util.List;

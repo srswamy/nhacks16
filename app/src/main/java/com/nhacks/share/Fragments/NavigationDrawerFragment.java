@@ -1,9 +1,7 @@
-package com.example.sagar.materialdesigntest.Fragments;
+package com.nhacks.share.Fragments;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.DrawerLayout;
@@ -13,7 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.sagar.materialdesigntest.R;
+import com.nhacks.share.R;
 
 
 public class NavigationDrawerFragment extends Fragment {

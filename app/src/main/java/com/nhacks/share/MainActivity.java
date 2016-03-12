@@ -1,4 +1,4 @@
-package com.example.sagar.materialdesigntest;
+package com.nhacks.share;
 
 import android.os.Handler;
 import android.support.v4.app.Fragment;
@@ -16,12 +16,11 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
-import com.example.sagar.materialdesigntest.Fragments.MyFragment;
-import com.example.sagar.materialdesigntest.Fragments.NavigationDrawerFragment;
-import com.example.sagar.materialdesigntest.Fragments.SampleFragment;
-import com.example.sagar.materialdesigntest.Fragments.SlidingTabsFragment;
-import com.example.sagar.materialdesigntest.Objects.DrawerRow;
-import com.example.sagar.materialdesigntest.ui.SlidingTabLayout;
+import com.nhacks.share.Fragments.MyFragment;
+import com.nhacks.share.Fragments.SampleFragment;
+import com.nhacks.share.Fragments.SlidingTabsFragment;
+import com.nhacks.share.Objects.DrawerRow;
+import com.nhacks.share.ui.SlidingTabLayout;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -155,7 +154,7 @@ public class MainActivity extends ActionBarActivity {
             DrawerRow current = new DrawerRow();
             current.name = names[i];
             if(current.name.equals("Home")){
-                current.iconId = R.mipmap.ic_launcher;
+                current.iconId =R.mipmap.ic_launcher;
             }
             else{
                 current.iconId = R.mipmap.ic_launcher;

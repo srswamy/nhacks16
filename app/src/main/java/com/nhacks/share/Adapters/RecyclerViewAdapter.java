@@ -1,4 +1,4 @@
-package com.example.sagar.materialdesigntest.Adapters;
+package com.nhacks.share.Adapters;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -8,8 +8,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.sagar.materialdesigntest.R;
-import com.example.sagar.materialdesigntest.Objects.RecyclerViewRow;
+import com.nhacks.share.Objects.RecyclerViewRow;
+import com.nhacks.share.R;
 
 import java.util.Collections;
 import java.util.List;

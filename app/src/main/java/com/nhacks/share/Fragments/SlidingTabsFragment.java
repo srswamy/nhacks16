@@ -1,4 +1,4 @@
-package com.example.sagar.materialdesigntest.Fragments;
+package com.nhacks.share.Fragments;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -10,8 +10,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.sagar.materialdesigntest.R;
-import com.example.sagar.materialdesigntest.ui.SlidingTabLayout;
+import com.nhacks.share.R;
+import com.nhacks.share.ui.SlidingTabLayout;
 
 /**
  * Created by SagarkumarDave on 12/17/2015.

@@ -1,4 +1,4 @@
-package com.example.sagar.materialdesigntest;
+package com.nhacks.share;
 
 import android.app.Activity;
 import android.content.Context;
@@ -9,7 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.sagar.materialdesigntest.Objects.DrawerRow;
+import com.nhacks.share.Objects.DrawerRow;
 
 import java.util.List;
 
