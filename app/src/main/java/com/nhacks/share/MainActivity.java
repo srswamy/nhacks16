@@ -40,8 +40,8 @@ public class MainActivity extends ActionBarActivity {
     DrawerLayout Drawer;
     private ActionBarDrawerToggle mDrawerToggle;
     String[] names;
-    String name = "Sagar Dave";
-    String email = "davesagar2012@gmail.com";
+    String name = "";
+    String email = "";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,6 +54,8 @@ public class MainActivity extends ActionBarActivity {
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             String value = extras.getString("new_variable_name");
+            email = extras.getString("user_email");
+            name = extras.getString("user_name");
         }
 
         mDrawerList = (RecyclerView) findViewById(R.id.drawerList);
