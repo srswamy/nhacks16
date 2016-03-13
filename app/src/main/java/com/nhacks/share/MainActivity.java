@@ -1,6 +1,8 @@
 package com.nhacks.share;
 
 import android.content.SharedPreferences;
+import android.graphics.drawable.Drawable;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
@@ -23,6 +25,10 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.joanzapata.iconify.IconDrawable;
+import com.joanzapata.iconify.Iconify;
+import com.joanzapata.iconify.fonts.FontAwesomeIcons;
+import com.joanzapata.iconify.fonts.FontAwesomeModule;
 import com.nhacks.share.Adapters.DrawerRecyclerViewAdapter;
 import com.nhacks.share.Fragments.AllBooksFragment;
 import com.nhacks.share.Fragments.MyFragment;
@@ -125,10 +131,10 @@ public class MainActivity extends ActionBarActivity {
             facebookId = sharedpreferences.getString("id_key", "");
         }
 
-
         mDrawerList = (RecyclerView) findViewById(R.id.drawerList);
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-        mAdapter = new DrawerRecyclerViewAdapter(getData(), name, email, 0, getSupportFragmentManager(), getSupportActionBar(), names, mDrawerLayout);
+        Iconify.with(new FontAwesomeModule());
+        mAdapter = new DrawerRecyclerViewAdapter(MainActivity.this, getData(), name, email, 0, getSupportFragmentManager(), getSupportActionBar(), names, mDrawerLayout);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         mDrawerList.setLayoutManager(layoutManager);
@@ -222,10 +228,16 @@ public class MainActivity extends ActionBarActivity {
             DrawerRow current = new DrawerRow();
             current.name = names[i];
             if(current.name.equals("Home")){
-                current.iconId =R.mipmap.ic_launcher;
+                Drawable iconDrawable = new IconDrawable(this, FontAwesomeIcons.fa_home);
+                current.iconId = iconDrawable;
+            }
+            else if (current.name.equals("Logout")) {
+                Drawable iconDrawable = new IconDrawable(this, FontAwesomeIcons.fa_sign_out);
+                current.iconId = iconDrawable;
             }
             else{
-                current.iconId = R.mipmap.ic_launcher;
+                Drawable iconDrawable = new IconDrawable(this, FontAwesomeIcons.fa_list);
+                current.iconId = iconDrawable;
             }
             data.add(current);
         }

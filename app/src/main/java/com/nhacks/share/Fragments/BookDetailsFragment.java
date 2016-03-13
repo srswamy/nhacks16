@@ -1,7 +1,6 @@
 package com.nhacks.share.Fragments;
 
 import android.content.SharedPreferences;
-import android.graphics.RectF;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
@@ -12,16 +11,12 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.alamkanak.weekview.MonthLoader;
-import com.alamkanak.weekview.WeekView;
-import com.alamkanak.weekview.WeekViewEvent;
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -31,7 +26,6 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.nhacks.share.Adapters.TimeViewAdapter;
 import com.nhacks.share.DateDialog;
-import com.nhacks.share.Objects.AvailableTime;
 import com.nhacks.share.Objects.Book;
 import com.nhacks.share.R;
 
@@ -42,17 +36,15 @@ import org.json.JSONObject;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 /**
- * Created by Sagar on 3/12/2016.
+ * Created by Sagar on 3/13/2016.
  */
-public class AddBookDetailsFragment extends Fragment {
+public class BookDetailsFragment extends Fragment {
     String category;
     private FloatingActionButton mFloatingSaveButton;
     private int lastRecordedReps = 0;
@@ -71,12 +63,13 @@ public class AddBookDetailsFragment extends Fragment {
     int curYear;
     private TimeViewAdapter mAdapter;
     JSONArray timeAndHours;
-
+    String userBookId;
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View layout = inflater.inflate(R.layout.l_add_book_data, container, false);
+        View layout = inflater.inflate(R.layout.l_book_details, container, false);
         Bundle b = getArguments();
         if (b != null) {
             category = b.getString("category");
+            userBookId = b.getString("user_book_id");
         }
         ((ActionBarActivity) getActivity()).getSupportActionBar().setTitle(category);
         mDateView = (TextView) layout.findViewById(R.id.dateText);
@@ -99,21 +92,6 @@ public class AddBookDetailsFragment extends Fragment {
                 final String name = bookName.getText().toString();
                 final String priceOfBook = pricePerHour.getText().toString();
                 final String edition = bookEdition.getText().toString();
-                String school = schoolName.getText().toString();
-                Toast toast;
-                if (name.equals("")) {
-                    toast = Toast.makeText(getContext(), "Please enter Book Name!", Toast.LENGTH_SHORT);
-                    toast.show();
-                } else {
-                    book.setName(name);
-                }
-                if (!edition.equals("")) {
-                    book.setEdition(Integer.valueOf(edition));
-
-                }
-                if (!school.equals("")) {
-
-                }
 
                 if (timeAndHours.length() == 0) {
                     JSONObject obj = new JSONObject();
@@ -136,7 +114,7 @@ public class AddBookDetailsFragment extends Fragment {
 
                 RequestQueue queue = Volley.newRequestQueue(getContext());
 
-                StringRequest myReq = new StringRequest(Request.Method.POST, "http://52.37.205.141:3000/api/v1/users/" + userId + "/books", new Response.Listener<String>() {
+                StringRequest myReq = new StringRequest(Request.Method.POST, "http://52.37.205.141:3000/api/v1/users/books/info?user_book_id=" + userBookId, new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
                         String t = "";

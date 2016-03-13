@@ -22,6 +22,7 @@
         <item>Home</item>
         <item>My Books</item>
         <item>Borrowed Books</item>
+        <item>Logout</item>
     </string-array>
 
     <string name="facebook_app_id">1689375318018475</string>
@@ -43,6 +44,14 @@
         <item>October</item>
         <item>November</item>
         <item>December</item>
+    </string-array>
+
+    <string-array name="categories">
+        <item>Engineering</item>
+        <item>Science</item>
+        <item>Accounting</item>
+        <item>Arts</item>
+        <item>Environment</item>
     </string-array>
 
 </resources>

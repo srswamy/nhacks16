@@ -47,7 +47,8 @@ public class DrawerListAdapter extends ArrayAdapter<DrawerRow> {
         ImageView iv = (ImageView) convertView.findViewById(R.id.image);
 
         tv.setText(listItems.get(position).name);
-        iv.setImageResource(listItems.get(position).iconId);
+//        iv.setImageResource(listItems.get(position).iconId);
+        iv.setImageDrawable(listItems.get(position).iconId);
 
         return convertView;
     }

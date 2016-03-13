@@ -1,7 +1,9 @@
 package com.nhacks.share.Fragments;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
@@ -15,7 +17,16 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+import com.github.rahatarmanahmed.cpv.CircularProgressView;
 import com.google.gson.Gson;
 import com.nhacks.share.Adapters.MyBooksRecyclerAdapter;
 import com.nhacks.share.Adapters.RecyclerViewAdapter;
@@ -30,7 +41,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by Sagar on 3/12/2016.
@@ -42,6 +55,16 @@ public class AllBooksFragment extends Fragment {
     private List<RecyclerViewRow> mData;
     private List<RecyclerViewRow> initialData;
     private FloatingActionButton mFloatingButton;
+    public static final String MY_PREFS_NAME = "MyPrefsFile";
+    String userId;
+    String[] categories;
+    CircularProgressView progressView;
+    private static final int PROGRESS = 0x1;
+
+    private ProgressBar mProgress;
+    private int mProgressStatus = 0;
+
+    private Handler mHandler = new Handler();
 
     public static AllBooksFragment getInstance(int position) {
         AllBooksFragment myFragment = new AllBooksFragment();
@@ -56,11 +79,19 @@ public class AllBooksFragment extends Fragment {
         View layout = inflater.inflate(R.layout.fragment_my, container, false);
         Bundle bundle = getArguments();
         setHasOptionsMenu(true);
-        mData = getData();
-        initialData = getData();
+        mData = new ArrayList<>();
+        initialData = new ArrayList<>();
+        progressView = (CircularProgressView) layout.findViewById(R.id.progress_view);
+        progressView.startAnimation();
+        progressView.setVisibility(View.VISIBLE);
         NetworkRequestManager.init(getContext());
 
-        adapter = new RecyclerViewAdapter(getContext(), mData);
+        final SharedPreferences sharedpreferences = getActivity().getSharedPreferences(MY_PREFS_NAME, getActivity().MODE_PRIVATE);
+        categories = getResources().getStringArray(R.array.categories);
+        //userId = sharedpreferences.getString("user_id", "");
+        userId = "10";
+        getData();
+        adapter = new RecyclerViewAdapter(getActivity(), mData);
         recyclerView = (RecyclerView) layout.findViewById(R.id.recyclerView);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
@@ -78,29 +109,69 @@ public class AllBooksFragment extends Fragment {
         return layout;
     }
 
-    public static List<RecyclerViewRow> getData() {
-        List<RecyclerViewRow> data = new ArrayList();
-        //int[] icons = {R.mipmap.ic_launcher, R.mipmap.ic_launcher, R.mipmap.ic_launcher, R.mipmap.ic_launcher};
-        String[] books = {"Algorithms and Data Structures", "Communication Systems", "Three", "Four", "Five", "Six", "Seven"};
-        String[] categories = {"Engineering", "Engineering", "Arts", "Accounting", "Arts", "Accounting", "Arts"};
-        final List<MyBooksRecyclerRow> dataFromJson;
-        for (int i = 0; i < books.length; i++) {
-            RecyclerViewRow current = new RecyclerViewRow();
-            current.setTitle(books[i]);
-            current.setCategory(categories[i]);
-            //current.iconId = icons[i % 3];
+    public void getData() {
+        final List<RecyclerViewRow> data = new ArrayList<>();
+        RequestQueue queue = Volley.newRequestQueue(getContext());
 
-            data.add(current);
-        }
+        StringRequest myReq = new StringRequest(Request.Method.GET, "http://52.37.205.141:3011/api/v1/books/available?user_id=" + userId, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                String t = "";
+                JSONObject obj;
+                try {
+                    obj = new JSONObject(response);
+                    String available_books = obj.getString("available_books");
+                    JSONArray jArray = new JSONArray(available_books);
+                    for (int i = 0; i < jArray.length(); i++) {
+                        JSONObject object = new JSONObject(jArray.get(i).toString());
+                        JSONObject bookObject = new JSONObject(object.getString("book"));
+                        String user_book_id = object.getString("user_book_id");
+                        String id = bookObject.getString("id");
+                        String name = bookObject.getString("name");
+                        String category_id = bookObject.getString("category_id");
+                        String edition = bookObject.getString("edition");
+                        RecyclerViewRow current = new RecyclerViewRow();
+                        current.setEdition(edition);
+                        current.setUserBookId(user_book_id);
+                        current.setTitle(name);
+                        current.setCategory(categories[Integer.valueOf(category_id)-1]);
+                        //current.iconId = icons[i % 3];
 
-        return data;
+                        data.add(current);
+                        initialData.add(current);
+                    }
+                    progressView.setVisibility(View.GONE);
+                    adapter.update(data);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+                //mPostCommentResponse.requestCompleted();
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                String g = "";
+                //mPostCommentResponse.requestEndedWithError(error);
+
+            }
+        }) {
+
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("Content-Type", "application/x-www-form-urlencoded");
+                return params;
+            }
+        };
+        queue.add(myReq);
     }
 
     private List<MyBooksRecyclerRow> getDataFromJson(JSONArray courseArr) throws JSONException {
 
         List<MyBooksRecyclerRow> myBooksRecyclerRowList = new ArrayList<>();
 
-        for(int i = 0; i < courseArr.length(); i++){
+        for (int i = 0; i < courseArr.length(); i++) {
             JSONObject courseObj = courseArr.getJSONObject(i);
             Gson gson = new Gson();
             MyBooksRecyclerRow course;

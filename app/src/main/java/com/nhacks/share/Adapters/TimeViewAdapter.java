@@ -1,20 +1,13 @@
 package com.nhacks.share.Adapters;
 
 import android.content.Context;
-import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 import android.widget.TextView;
-
-import com.nhacks.share.Fragments.AddBookDetailsFragment;
 import com.nhacks.share.R;
-
-import java.util.List;
 
 /**
  * Created by Sagar on 3/12/2016.
