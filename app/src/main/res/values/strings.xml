@@ -26,6 +26,8 @@
 
     <string name="facebook_app_id">1689375318018475</string>
     <string name="action_search">Search</string>
+    <string name="action_filter">Filter</string>
+
     <string name="title_activity_add_book_for_rent">AddBookForRent</string>
 
     <string-array name="monthNames">

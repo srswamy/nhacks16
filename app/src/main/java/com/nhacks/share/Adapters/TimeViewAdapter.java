@@ -20,7 +20,7 @@ import java.util.List;
  * Created by Sagar on 3/12/2016.
  */
 public class TimeViewAdapter extends RecyclerView.Adapter<TimeViewAdapter.MyViewHolder> {
-    int[] times;
+    public int[] times;
     private LayoutInflater inflater;
     Context context;
 
@@ -83,8 +83,10 @@ public class TimeViewAdapter extends RecyclerView.Adapter<TimeViewAdapter.MyView
                 public void onClick(View v) {
                     if (bar.getVisibility() == View.GONE) {
                         bar.setVisibility(View.VISIBLE);
+                        times[getPosition()] = 1;
                     } else {
                         bar.setVisibility(View.GONE);
+                        times[getPosition()] = 0;
                     }
                 }
             });
