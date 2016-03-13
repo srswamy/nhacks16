@@ -16,13 +16,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
 import com.google.gson.Gson;
+import com.nhacks.share.Adapters.MyBooksRecyclerAdapter;
 import com.nhacks.share.Adapters.RecyclerViewAdapter;
 import com.nhacks.share.AddBookForRentActivity;
-import com.nhacks.share.Network.NetworkRequestBuilder;
 import com.nhacks.share.Network.NetworkRequestManager;
+import com.nhacks.share.Objects.MyBooksRecyclerRow;
 import com.nhacks.share.Objects.RecyclerViewRow;
 import com.nhacks.share.R;
 
@@ -61,7 +60,7 @@ public class AllBooksFragment extends Fragment {
         initialData = getData();
         NetworkRequestManager.init(getContext());
 
-        adapter = new RecyclerViewAdapter(getActivity(), mData);
+        adapter = new RecyclerViewAdapter(getContext(), mData);
         recyclerView = (RecyclerView) layout.findViewById(R.id.recyclerView);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
@@ -84,7 +83,7 @@ public class AllBooksFragment extends Fragment {
         //int[] icons = {R.mipmap.ic_launcher, R.mipmap.ic_launcher, R.mipmap.ic_launcher, R.mipmap.ic_launcher};
         String[] books = {"Algorithms and Data Structures", "Communication Systems", "Three", "Four", "Five", "Six", "Seven"};
         String[] categories = {"Engineering", "Engineering", "Arts", "Accounting", "Arts", "Accounting", "Arts"};
-        final List<RecyclerViewRow> dataFromJson;
+        final List<MyBooksRecyclerRow> dataFromJson;
         for (int i = 0; i < books.length; i++) {
             RecyclerViewRow current = new RecyclerViewRow();
             current.setTitle(books[i]);
@@ -97,20 +96,20 @@ public class AllBooksFragment extends Fragment {
         return data;
     }
 
-    private List<RecyclerViewRow> getDataFromJson(JSONArray courseArr) throws JSONException {
+    private List<MyBooksRecyclerRow> getDataFromJson(JSONArray courseArr) throws JSONException {
 
-        List<RecyclerViewRow> recyclerViewRowList = new ArrayList<>();
+        List<MyBooksRecyclerRow> myBooksRecyclerRowList = new ArrayList<>();
 
         for(int i = 0; i < courseArr.length(); i++){
             JSONObject courseObj = courseArr.getJSONObject(i);
             Gson gson = new Gson();
-            RecyclerViewRow course;
-            course = gson.fromJson(String.valueOf(courseObj), RecyclerViewRow.class);
+            MyBooksRecyclerRow course;
+            course = gson.fromJson(String.valueOf(courseObj), MyBooksRecyclerRow.class);
 
-            recyclerViewRowList.add(course);
+            myBooksRecyclerRowList.add(course);
         }
 
-        return recyclerViewRowList;
+        return myBooksRecyclerRowList;
     }
 
     @Override

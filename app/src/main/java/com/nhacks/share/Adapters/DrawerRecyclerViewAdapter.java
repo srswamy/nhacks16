@@ -83,13 +83,13 @@ public class DrawerRecyclerViewAdapter extends RecyclerView.Adapter<DrawerRecycl
 
             Fragment newFragment;
             newFragment = AllBooksFragment.getInstance(0);
-            switch(pos){
+            switch(pos-2){
 
                 case 0:
                     newFragment = AllBooksFragment.getInstance(0);
                     break;
                 case 1:
-                    newFragment = MyBooksFragment.getInstance(0);
+                    newFragment = MyBooksFragment.getInstance(1);
                     break;
                 case 2:
                     newFragment = AllBooksFragment.getInstance(0);

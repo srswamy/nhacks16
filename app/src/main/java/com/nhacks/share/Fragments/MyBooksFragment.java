@@ -1,9 +1,7 @@
 package com.nhacks.share.Fragments;
 
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
@@ -18,12 +16,19 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
 import com.google.gson.Gson;
-import com.nhacks.share.Adapters.RecyclerViewAdapter;
+import com.nhacks.share.Adapters.MyBooksRecyclerAdapter;
 import com.nhacks.share.AddBookForRentActivity;
 import com.nhacks.share.Network.NetworkRequestManager;
-import com.nhacks.share.Objects.RecyclerViewRow;
+import com.nhacks.share.Objects.MyBooksRecyclerRow;
 import com.nhacks.share.R;
 
 import org.json.JSONArray;
@@ -31,6 +36,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -38,17 +44,22 @@ import java.util.List;
  */
 public class MyBooksFragment extends Fragment {
 
-    private RecyclerViewAdapter adapter;
+    private MyBooksRecyclerAdapter adapter;
     private RecyclerView recyclerView;
-    private List<RecyclerViewRow> mData;
-    private List<RecyclerViewRow> initialData;
+    private List<MyBooksRecyclerRow> mData;
+    private List<MyBooksRecyclerRow> initialData;
     private FloatingActionButton mFloatingButton;
 
     private String name = "";
     private String email = "";
     private String facebookId = "";
+    private String userId = "";
 
+    public static final String API_PREFIX = "http://52.37.205.141:3011";
     private static final String MY_PREFS_NAME = "MyPrefsFile";
+
+    // TODO: DELETE ME ONCE THE RESOURCE LIST IS MADE
+    String[] categories = {"Engineering", "Science", "Accounting", "Arts", "Environment"};
 
     public static MyBooksFragment getInstance(int position) {
         MyBooksFragment fragment = new MyBooksFragment();
@@ -66,14 +77,20 @@ public class MyBooksFragment extends Fragment {
         name = sharedpreferences.getString("name_key", "");
         email = sharedpreferences.getString("email_key", "");
         facebookId = sharedpreferences.getString("id_key", "");
+        userId = sharedpreferences.getString("user_id", "");
 
-        Bundle bundle = getArguments();
+
         setHasOptionsMenu(true);
-        mData = getData();
-        initialData = getData();
+
+        // Set up mData
+        mData = new ArrayList<>();
+
+        getData();
+
+        initialData = mData;
         NetworkRequestManager.init(getContext());
 
-        adapter = new RecyclerViewAdapter(getActivity(), mData);
+        adapter = new MyBooksRecyclerAdapter(getActivity(), mData);
         recyclerView = (RecyclerView) layout.findViewById(R.id.recyclerView);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
@@ -91,38 +108,52 @@ public class MyBooksFragment extends Fragment {
         return layout;
     }
 
-    public static List<RecyclerViewRow> getData() {
-        List<RecyclerViewRow> data = new ArrayList();
-        //int[] icons = {R.mipmap.ic_launcher, R.mipmap.ic_launcher, R.mipmap.ic_launcher, R.mipmap.ic_launcher};
-        String[] books = {"Algorithms and Data Structures", "Communication Systems", "Three", "Four", "Five", "Six", "Seven"};
-        String[] categories = {"Engineering", "Engineering", "Arts", "Accounting", "Arts", "Accounting", "Arts"};
-        final List<RecyclerViewRow> dataFromJson;
-        for (int i = 0; i < books.length; i++) {
-            RecyclerViewRow current = new RecyclerViewRow();
-            current.setTitle(books[i]);
-            current.setCategory(categories[i]);
-            //current.iconId = icons[i % 3];
+    public void getData() {
+        String requestUrl = API_PREFIX + "/api/v1/users/" + userId + "/lent_books/";
 
-            data.add(current);
-        }
+        RequestQueue queue = Volley.newRequestQueue(getContext());
 
-        return data;
+        JsonObjectRequest getRequest = new JsonObjectRequest(Request.Method.GET, requestUrl,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        try {
+                            getDataFromJson(response);
+                            adapter.updateData(mData);
+                            adapter.notifyDataSetChanged();
+                        } catch (JSONException e) {
+                            Toast.makeText(getContext(), "Oops, looks like we ran into an issue!", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                },
+                new Response.ErrorListener()
+                {
+                    @Override
+                public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(getContext(), "Oops, ran into an error while grabbing some data!", Toast.LENGTH_SHORT).show();
+                    }
+                }
+        );
+
+        queue.add(getRequest);
     }
 
-    private List<RecyclerViewRow> getDataFromJson(JSONArray courseArr) throws JSONException {
+    private void getDataFromJson(JSONObject borrowedBooks) throws JSONException {
 
-        List<RecyclerViewRow> recyclerViewRowList = new ArrayList<>();
+        mData = new ArrayList<>();
 
-        for(int i = 0; i < courseArr.length(); i++){
-            JSONObject courseObj = courseArr.getJSONObject(i);
-            Gson gson = new Gson();
-            RecyclerViewRow course;
-            course = gson.fromJson(String.valueOf(courseObj), RecyclerViewRow.class);
+        JSONArray jsonArr = borrowedBooks.getJSONArray("books");
 
-            recyclerViewRowList.add(course);
+        for(int i = 0; i < jsonArr.length(); i++){
+            JSONObject jsonObj = jsonArr.getJSONObject(i);
+            int currentStatus = jsonObj.getInt("current_status");
+            JSONObject bookObj = jsonObj.getJSONObject("book");
+
+            MyBooksRecyclerRow row = new MyBooksRecyclerRow(bookObj.getString("name"), categories[bookObj.getInt("category_id")-1], currentStatus);
+
+            mData.add(row);
         }
 
-        return recyclerViewRowList;
     }
 
     @Override
@@ -138,17 +169,17 @@ public class MyBooksFragment extends Fragment {
 
         @Override
         public boolean onQueryTextChange(String query) {
-            final List<RecyclerViewRow> filteredModelList = filter(initialData, query);
+            final List<MyBooksRecyclerRow> filteredModelList = filter(initialData, query);
             adapter.animateTo(filteredModelList);
             recyclerView.scrollToPosition(0);
             return true;
         }
 
-        private List<RecyclerViewRow> filter(List<RecyclerViewRow> models, String query) {
+        private List<MyBooksRecyclerRow> filter(List<MyBooksRecyclerRow> models, String query) {
             query = query.toLowerCase();
 
-            final List<RecyclerViewRow> filteredModelList = new ArrayList<>();
-            for (RecyclerViewRow model : models) {
+            final List<MyBooksRecyclerRow> filteredModelList = new ArrayList<>();
+            for (MyBooksRecyclerRow model : models) {
                 final String text = model.getTitle().toLowerCase();
                 final String category = model.getCategory().toLowerCase();
 

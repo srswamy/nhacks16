@@ -1,7 +1,6 @@
 package com.nhacks.share;
 
 import android.content.SharedPreferences;
-import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
@@ -16,8 +15,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ListView;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -27,13 +24,10 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.nhacks.share.Adapters.DrawerRecyclerViewAdapter;
-import com.nhacks.share.Adapters.RecyclerViewAdapter;
 import com.nhacks.share.Fragments.AllBooksFragment;
 import com.nhacks.share.Fragments.MyFragment;
 import com.nhacks.share.Fragments.SampleFragment;
 import com.nhacks.share.Fragments.SlidingTabsFragment;
-import com.nhacks.share.Network.NetworkRequestBuilder;
-import com.nhacks.share.Network.NetworkRequestManager;
 import com.nhacks.share.Objects.DrawerRow;
 import com.nhacks.share.ui.SlidingTabLayout;
 
