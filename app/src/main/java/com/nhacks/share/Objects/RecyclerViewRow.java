@@ -7,6 +7,24 @@ public class RecyclerViewRow {
     public int iconId;
     public String title;
     private String category;
+    private String userBookId;
+    private String edition;
+
+    public String getEdition() {
+        return edition;
+    }
+
+    public void setEdition(String edition) {
+        this.edition = edition;
+    }
+
+    public String getUserBookId() {
+        return userBookId;
+    }
+
+    public void setUserBookId(String userBookId) {
+        this.userBookId = userBookId;
+    }
 
     public int getIconId() {
         return iconId;

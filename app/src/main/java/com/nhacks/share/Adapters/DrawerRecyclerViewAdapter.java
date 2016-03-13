@@ -16,6 +16,7 @@ import android.widget.TextView;
 
 import com.amulyakhare.textdrawable.TextDrawable;
 import com.nhacks.share.Fragments.AllBooksFragment;
+import com.nhacks.share.Fragments.BorrowedBooksFragment;
 import com.nhacks.share.Fragments.MyFragment;
 import com.nhacks.share.Fragments.SampleFragment;
 import com.nhacks.share.Fragments.SlidingTabsFragment;
@@ -82,8 +83,7 @@ public class DrawerRecyclerViewAdapter extends RecyclerView.Adapter<DrawerRecycl
 
             Fragment newFragment;
             newFragment = AllBooksFragment.getInstance(0);
-            switch(pos){
-
+            switch(pos-2){
                 case 0:
                     newFragment = AllBooksFragment.getInstance(0);
                     break;
@@ -91,7 +91,7 @@ public class DrawerRecyclerViewAdapter extends RecyclerView.Adapter<DrawerRecycl
                     newFragment = AllBooksFragment.getInstance(0);
                     break;
                 case 2:
-                    newFragment = AllBooksFragment.getInstance(0);
+                    newFragment = BorrowedBooksFragment.getInstance(0);
                     break;
             }
             aBar.setTitle(names[pos-2]);

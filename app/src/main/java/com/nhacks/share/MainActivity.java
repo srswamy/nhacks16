@@ -130,7 +130,6 @@ public class MainActivity extends ActionBarActivity {
             facebookId = sharedpreferences.getString("id_key", "");
         }
 
-
         mDrawerList = (RecyclerView) findViewById(R.id.drawerList);
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         mAdapter = new DrawerRecyclerViewAdapter(getData(), name, email, 0, getSupportFragmentManager(), getSupportActionBar(), names, mDrawerLayout);

@@ -45,4 +45,12 @@
         <item>December</item>
     </string-array>
 
+    <string-array name="categories">
+        <item>Engineering</item>
+        <item>Science</item>
+        <item>Accounting</item>
+        <item>Arts</item>
+        <item>Environment</item>
+    </string-array>
+
 </resources>
