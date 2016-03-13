@@ -61,27 +61,10 @@ public class AllBooksFragment extends Fragment {
         initialData = getData();
         NetworkRequestManager.init(getContext());
 
-        //adapter = new RecyclerViewAdapter(getActivity(), mData);
+        adapter = new RecyclerViewAdapter(getActivity(), mData);
         recyclerView = (RecyclerView) layout.findViewById(R.id.recyclerView);
-        //recyclerView.setAdapter(adapter);
+        recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-
-        NetworkRequestManager.addRequests(NetworkRequestBuilder.getRawJSONRequest("", new Response.Listener<JSONObject>() {
-            @Override
-            public void onResponse(JSONObject response) {
-                try {
-                    adapter = new RecyclerViewAdapter(getActivity(), getDataFromJson(response.getJSONArray("data")));
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-                recyclerView.setAdapter(adapter);
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-
-            }
-        }));
 
         mFloatingButton = (FloatingActionButton) layout.findViewById(R.id.floatingAddBookToRentButton);
         mFloatingButton.setOnClickListener(new View.OnClickListener() {

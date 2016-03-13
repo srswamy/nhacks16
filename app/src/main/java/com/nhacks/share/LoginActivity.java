@@ -24,6 +24,7 @@ import com.facebook.GraphResponse;
 import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
+import com.nhacks.share.Network.NetworkRequestManager;
 
 import org.json.JSONObject;
 
@@ -41,6 +42,7 @@ public class LoginActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         FacebookSdk.sdkInitialize(this.getApplicationContext());
+        NetworkRequestManager.init(this);
 
         setContentView(R.layout.activity_login);
 
