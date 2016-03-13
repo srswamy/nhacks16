@@ -43,6 +43,17 @@
             android:hint="School Name"
             android:inputType="text" />
 
+        <EditText
+            android:id="@+id/price"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:layout_marginLeft="4dp"
+            android:layout_marginRight="4dp"
+            android:layout_marginTop="16dp"
+            android:hint="Book Price in $"
+            android:inputType="numberDecimal" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="40dp"

@@ -84,6 +84,16 @@ public class MainActivity extends ActionBarActivity {
                 @Override
                 public void onResponse(String response) {
                     String t = "";
+                    JSONObject obj;
+                    try {
+                        obj = new JSONObject(response);
+                        SharedPreferences.Editor editor = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE).edit();;
+                        editor.putString("user_id", obj.getString("user_id"));
+                        editor.commit();
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+
                     //mPostCommentResponse.requestCompleted();
                 }
             }, new Response.ErrorListener() {
@@ -91,6 +101,7 @@ public class MainActivity extends ActionBarActivity {
                 public void onErrorResponse(VolleyError error) {
                     String g = "";
                     //mPostCommentResponse.requestEndedWithError(error);
+
                 }
             }){
                 @Override
@@ -176,7 +187,7 @@ public class MainActivity extends ActionBarActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.action_filter) {
             return true;
         }
 

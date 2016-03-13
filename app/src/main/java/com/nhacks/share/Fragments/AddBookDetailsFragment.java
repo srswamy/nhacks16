@@ -1,5 +1,6 @@
 package com.nhacks.share.Fragments;
 
+import android.content.SharedPreferences;
 import android.graphics.RectF;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -21,18 +22,30 @@ import android.widget.Toast;
 import com.alamkanak.weekview.MonthLoader;
 import com.alamkanak.weekview.WeekView;
 import com.alamkanak.weekview.WeekViewEvent;
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.nhacks.share.Adapters.TimeViewAdapter;
 import com.nhacks.share.DateDialog;
 import com.nhacks.share.Objects.AvailableTime;
 import com.nhacks.share.Objects.Book;
 import com.nhacks.share.R;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by Sagar on 3/12/2016.
@@ -48,12 +61,14 @@ public class AddBookDetailsFragment extends Fragment {
     TextView mDateView;
     ImageView calenderView;
     private RecyclerView mRecyclerView;
-
+    public static final String MY_PREFS_NAME = "MyPrefsFile";
+    private EditText pricePerHour;
     Date mSelectedDate;
     ImageView mNextDay;
     ImageView mPrevDay;
     int curYear;
     private TimeViewAdapter mAdapter;
+    JSONArray timeAndHours;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View layout = inflater.inflate(R.layout.l_add_book_data, container, false);
@@ -63,7 +78,8 @@ public class AddBookDetailsFragment extends Fragment {
         }
         ((ActionBarActivity) getActivity()).getSupportActionBar().setTitle(category);
         mDateView = (TextView) layout.findViewById(R.id.dateText);
-
+        final SharedPreferences sharedpreferences = getActivity().getSharedPreferences(MY_PREFS_NAME, getActivity().MODE_PRIVATE);
+        pricePerHour = (EditText) layout.findViewById(R.id.price);
         bookName = (EditText) layout.findViewById(R.id.bookName);
         bookEdition = (EditText) layout.findViewById(R.id.bookEdition);
         schoolName = (EditText) layout.findViewById(R.id.schoolName);
@@ -71,16 +87,17 @@ public class AddBookDetailsFragment extends Fragment {
         mNextDay = (ImageView) layout.findViewById(R.id.nextDayBtn);
         mPrevDay = (ImageView) layout.findViewById(R.id.prevDayBtn);
         mRecyclerView = (RecyclerView) layout.findViewById(R.id.timeRecyclerView);
-
+        final String userId = sharedpreferences.getString("user_id", "");
+        timeAndHours = new JSONArray();
         mFloatingSaveButton = (FloatingActionButton) layout.findViewById(R.id.floatingSaveBookButton);
         mFloatingSaveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Book book = new Book();
-                String name = bookName.getText().toString();
-                String edition = bookEdition.getText().toString();
+                final String name = bookName.getText().toString();
+                final String priceOfBook = pricePerHour.getText().toString();
+                final String edition = bookEdition.getText().toString();
                 String school = schoolName.getText().toString();
-
                 Toast toast;
                 if (name.equals("")) {
                     toast = Toast.makeText(getContext(), "Please enter Book Name!", Toast.LENGTH_SHORT);
@@ -95,6 +112,43 @@ public class AddBookDetailsFragment extends Fragment {
                 if (!school.equals("")) {
 
                 }
+
+                RequestQueue queue = Volley.newRequestQueue(getContext());
+
+                StringRequest myReq = new StringRequest(Request.Method.POST,"http://52.37.205.141:3000/api/v1/users/" + userId + "/books/", new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        String t = "";
+                        //mPostCommentResponse.requestCompleted();
+                    }
+                }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        String g = "";
+                        //mPostCommentResponse.requestEndedWithError(error);
+                    }
+                }){
+                    @Override
+                    protected Map<String,String> getParams(){
+                        Map<String,String> params = new HashMap<String, String>();
+                        params.put("category_name", category);
+                        params.put("school", "University of Waterloo");
+                        params.put("name", name);
+                        params.put("edition", edition);
+                        params.put("price_per_hour", priceOfBook);
+
+                        return params;
+                    }
+
+                    @Override
+                    public Map<String, String> getHeaders() throws AuthFailureError {
+                        Map<String,String> params = new HashMap<String, String>();
+                        params.put("Content-Type","application/x-www-form-urlencoded");
+                        return params;
+                    }
+                };
+                queue.add(myReq);
+
                 getActivity().finish();
             }
         });
@@ -138,6 +192,8 @@ public class AddBookDetailsFragment extends Fragment {
         mPrevDay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                JSONObject obj = new JSONObject();
+                //obj.put("date", mSelectedDate.);
                 mSelectedDate = getPrevDayDate(mSelectedDate);
             }
         });
