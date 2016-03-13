@@ -153,7 +153,8 @@ public class DrawerRecyclerViewAdapter extends RecyclerView.Adapter<DrawerRecycl
     public void onBindViewHolder(DrawerRecyclerViewAdapter.MyViewHolder holder, int position) {
         if (holder.Holderid == 1) {
             holder.textView.setText(rows.get(position - 1).name);
-            holder.imageView.setImageResource(rows.get(position - 1).iconId);
+//            holder.imageView.setImageResource(rows.get(position - 1).iconId);
+            holder.imageView.setImageDrawable(rows.get(position - 1).iconId);
         } else {
 
             holder.Name.setText(name);
