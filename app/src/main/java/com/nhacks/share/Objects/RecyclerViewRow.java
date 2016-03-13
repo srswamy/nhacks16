@@ -9,6 +9,8 @@ public class RecyclerViewRow {
     private String category;
     private String userBookId;
     private String edition;
+    private Double price;
+    private Integer rentedCount;
 
     public String getEdition() {
         return edition;
@@ -49,4 +51,12 @@ public class RecyclerViewRow {
     public void setCategory(String category) {
         this.category = category;
     }
+
+    public Double getPrice() {return price;}
+
+    public void setPrice(Double price) { this.price = price; }
+
+    public Integer getRentedCount() {return rentedCount;}
+
+    public void setRentedCount(Integer rentedCount) { this.rentedCount = rentedCount;}
 }

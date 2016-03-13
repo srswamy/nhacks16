@@ -111,7 +111,7 @@ public class AllBooksFragment extends Fragment {
         final List<RecyclerViewRow> data = new ArrayList<>();
         RequestQueue queue = Volley.newRequestQueue(getContext());
 
-        StringRequest myReq = new StringRequest(Request.Method.GET, "http://52.37.205.141:3011/api/v1/books/available?user_id=" + userId, new Response.Listener<String>() {
+        StringRequest myReq = new StringRequest(Request.Method.GET, "http://52.37.205.141:3001/api/v1/books/available?user_id=" + userId, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 String t = "";
@@ -124,6 +124,8 @@ public class AllBooksFragment extends Fragment {
                         JSONObject object = new JSONObject(jArray.get(i).toString());
                         JSONObject bookObject = new JSONObject(object.getString("book"));
                         String user_book_id = object.getString("user_book_id");
+                        Double price = object.getDouble("price");
+                        Integer rentedCount = object.getInt("rented_count");
                         String id = bookObject.getString("id");
                         String name = bookObject.getString("name");
                         String category_id = bookObject.getString("category_id");
@@ -132,7 +134,9 @@ public class AllBooksFragment extends Fragment {
                         current.setEdition(edition);
                         current.setUserBookId(user_book_id);
                         current.setTitle(name);
-                        current.setCategory(categories[Integer.valueOf(category_id)-1]);
+                        current.setCategory(categories[Integer.valueOf(category_id) - 1]);
+                        current.setPrice(price);
+                        current.setRentedCount(rentedCount);
                         //current.iconId = icons[i % 3];
 
                         data.add(current);

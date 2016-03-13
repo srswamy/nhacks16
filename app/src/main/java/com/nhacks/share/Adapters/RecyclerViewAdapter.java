@@ -50,6 +50,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         RecyclerViewRow current = data.get(i);
         myViewHolder.tv.setText(current.getTitle());
         myViewHolder.categoy.setText(current.getCategory());
+        myViewHolder.price.setText("$" + current.getPrice().toString() + "/hr");
+        myViewHolder.rented_count.setText("Rented " + current.getRentedCount().toString() + " times");
         //myViewHolder.iv.setImageResource(current.iconId);
     }
 
@@ -114,6 +116,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         TextView categoy;
         ImageView iv;
         ImageView remove;
+        TextView price;
+        TextView rented_count;
 
         public MyViewHolder(View itemView) {
             super(itemView);
@@ -128,8 +132,10 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             tv = (TextView) itemView.findViewById(R.id.textView);
             categoy = (TextView) itemView.findViewById(R.id.category);
             //iv = (ImageView) itemView.findViewById(R.id.image);
-            remove = (ImageView) itemView.findViewById(R.id.remove_img);
-            remove.setOnClickListener(this);
+//            remove = (ImageView) itemView.findViewById(R.id.remove_img);
+//            remove.setOnClickListener(this);
+            price = (TextView) itemView.findViewById(R.id.price);
+            rented_count = (TextView) itemView.findViewById(R.id.rented_count);
         }
 
 
