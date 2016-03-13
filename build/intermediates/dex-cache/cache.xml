@@ -2,46 +2,144 @@
 <items version="2" >
 
     <item
-        jar="C:\Users\SagarkumarDave\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\23.1.0\support-annotations-23.1.0.jar"
+        jar="C:\Users\Sagar\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\24.0.0-alpha1\support-annotations-24.0.0-alpha1.jar"
         jumboMode="false"
         revision="23.0.1"
-        sha1="92e3fc113ec3ee36b64603a38857b95700025633">
-        <dex dex="C:\Users\SagarkumarDave\Documents\MaterialDesignTest\app\build\intermediates\pre-dexed\debug\support-annotations-23.1.0-d42b8f863ad1c7f8faeee3199a5a7c9660f83390.jar" />
+        sha1="b8062546971a3d196343232a19a3c0016272ba47">
+        <dex dex="C:\Users\Sagar\Documents\nhacks16\nhacks16-huntify\app\build\intermediates\pre-dexed\debug\support-annotations-24.0.0-alpha1-05f6408d871f05c7f790ba09cb588489e7320743.jar" />
     </item>
     <item
-        jar="C:\Users\SagarkumarDave\Documents\MaterialDesignTest\app\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\23.1.0\jars\classes.jar"
+        jar="C:\Users\Sagar\Documents\nhacks16\nhacks16-huntify\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-basement\8.1.0\jars\classes.jar"
         jumboMode="false"
         revision="23.0.1"
-        sha1="3f151e49c316a5ab2c065969a3b3b55ef9b393fc">
-        <dex dex="C:\Users\SagarkumarDave\Documents\MaterialDesignTest\app\build\intermediates\pre-dexed\debug\classes-9d834e5fb72940eb4a9a3f488e5ce02777c34fba.jar" />
+        sha1="d0dda274b703dd9c5bb056867649d22b4171ae7d">
+        <dex dex="C:\Users\Sagar\Documents\nhacks16\nhacks16-huntify\app\build\intermediates\pre-dexed\debug\classes-0ed28b8c9376252dfc6b911fe5b04db0dd3b8394.jar" />
     </item>
     <item
-        jar="C:\Users\SagarkumarDave\Documents\MaterialDesignTest\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.0.1\jars\classes.jar"
+        jar="C:\Users\Sagar\Documents\nhacks16\nhacks16-huntify\app\build\intermediates\exploded-aar\com.facebook.android\facebook-android-sdk\4.10.0\jars\classes.jar"
         jumboMode="false"
         revision="23.0.1"
-        sha1="d86429b0f0b3f3cafbeb78dda1b9d89119ccb05d">
-        <dex dex="C:\Users\SagarkumarDave\Documents\MaterialDesignTest\app\build\intermediates\pre-dexed\debug\classes-3c24118976a122ee1e3b580defb409399e917864.jar" />
+        sha1="bcb4a50f5e2c67b3e84441b1b2a239856776c9b8">
+        <dex dex="C:\Users\Sagar\Documents\nhacks16\nhacks16-huntify\app\build\intermediates\pre-dexed\debug\classes-e49a2f9b3ad27ccb9250bb2af111c59f15b23607.jar" />
     </item>
     <item
-        jar="C:\Users\SagarkumarDave\Documents\MaterialDesignTest\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.0\jars\classes.jar"
+        jar="C:\Users\Sagar\.gradle\caches\modules-2\files-2.1\com.google.code.gson\gson\2.2.4\a60a5e993c98c864010053cb901b7eab25306568\gson-2.2.4.jar"
         jumboMode="false"
         revision="23.0.1"
-        sha1="ddde541c289c8b816a8f8fd6c325d80788c522a6">
-        <dex dex="C:\Users\SagarkumarDave\Documents\MaterialDesignTest\app\build\intermediates\pre-dexed\debug\classes-16c80e572ea55386a7026a96df1b1c38d5d10b99.jar" />
+        sha1="a60a5e993c98c864010053cb901b7eab25306568">
+        <dex dex="C:\Users\Sagar\Documents\nhacks16\nhacks16-huntify\app\build\intermediates\pre-dexed\debug\gson-2.2.4-059e6e0ce8e30998c2d626354dbef83f9a859d29.jar" />
     </item>
     <item
-        jar="C:\Users\SagarkumarDave\Documents\MaterialDesignTest\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.0\jars\libs\internal_impl-23.1.0.jar"
+        jar="C:\Users\Sagar\Documents\nhacks16\nhacks16-huntify\app\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\24.0.0-alpha1\jars\classes.jar"
         jumboMode="false"
         revision="23.0.1"
-        sha1="8716243bf04bae8d6c9ca94d27b9a9be7236f0a3">
-        <dex dex="C:\Users\SagarkumarDave\Documents\MaterialDesignTest\app\build\intermediates\pre-dexed\debug\internal_impl-23.1.0-fcf03494091c7aef8bb235a8ead8c6baf6e13711.jar" />
+        sha1="1f1c7067e22acf05bddbca9f94422050cd848a86">
+        <dex dex="C:\Users\Sagar\Documents\nhacks16\nhacks16-huntify\app\build\intermediates\pre-dexed\debug\classes-2fdace8b8b903fc4b4a1a53f0517d0c5c24d81fa.jar" />
     </item>
     <item
-        jar="C:\Users\SagarkumarDave\Documents\MaterialDesignTest\app\build\intermediates\exploded-aar\com.android.support\cardview-v7\23.1.0\jars\classes.jar"
+        jar="C:\Users\Sagar\Documents\nhacks16\nhacks16-huntify\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-ads\8.1.0\jars\classes.jar"
         jumboMode="false"
         revision="23.0.1"
-        sha1="d96886efea7cc74fbb3abd0e3b51d5638fc57be0">
-        <dex dex="C:\Users\SagarkumarDave\Documents\MaterialDesignTest\app\build\intermediates\pre-dexed\debug\classes-17cde1ce2f7574e0eca2f583f9de6e57a518c2a7.jar" />
+        sha1="997773777cf3904c11d6764fe3b7668538220e49">
+        <dex dex="C:\Users\Sagar\Documents\nhacks16\nhacks16-huntify\app\build\intermediates\pre-dexed\debug\classes-384f5ad4ef468fb82124d5c65be4e505856afca4.jar" />
+    </item>
+    <item
+        jar="C:\Users\Sagar\Documents\nhacks16\nhacks16-huntify\app\build\intermediates\exploded-aar\com.android.support\cardview-v7\24.0.0-alpha1\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="5305936738497fe4a5d89fc4f13015931c0fd402">
+        <dex dex="C:\Users\Sagar\Documents\nhacks16\nhacks16-huntify\app\build\intermediates\pre-dexed\debug\classes-3c01f457727ce9a866cab264215827a969daa9ef.jar" />
+    </item>
+    <item
+        jar="C:\Users\Sagar\.gradle\caches\modules-2\files-2.1\com.parse.bolts\bolts-tasks\1.3.0\8a62fd16fcc1c06f284fc98e6cbded2a5af1dd4c\bolts-tasks-1.3.0.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="8a62fd16fcc1c06f284fc98e6cbded2a5af1dd4c">
+        <dex dex="C:\Users\Sagar\Documents\nhacks16\nhacks16-huntify\app\build\intermediates\pre-dexed\debug\bolts-tasks-1.3.0-09e209811fbea3279e68282400cc6ab647d154c4.jar" />
+    </item>
+    <item
+        jar="C:\Users\Sagar\.gradle\caches\modules-2\files-2.1\com.mcxiaoke.volley\library\1.0.15\9093a362d18c5f81f58e49d86dece57d9b6e1cb7\library-1.0.15.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="9093a362d18c5f81f58e49d86dece57d9b6e1cb7">
+        <dex dex="C:\Users\Sagar\Documents\nhacks16\nhacks16-huntify\app\build\intermediates\pre-dexed\debug\library-1.0.15-e456e8cedc680bb759aff6b6a8fc08cd33e38380.jar" />
+    </item>
+    <item
+        jar="C:\Users\Sagar\Documents\nhacks16\nhacks16-huntify\app\build\intermediates\exploded-aar\com.android.support\support-v4\24.0.0-alpha1\jars\libs\internal_impl-24.0.0-alpha1.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="e57fba0a2d57d3501d8f4ff44c23092978804845">
+        <dex dex="C:\Users\Sagar\Documents\nhacks16\nhacks16-huntify\app\build\intermediates\pre-dexed\debug\internal_impl-24.0.0-alpha1-3158422419755ab04fe260625eb9f162f90fe355.jar" />
+    </item>
+    <item
+        jar="C:\Users\Sagar\Documents\nhacks16\nhacks16-huntify\app\build\intermediates\exploded-aar\com.amulyakhare\com.amulyakhare.textdrawable\1.0.1\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="d237556caead5b93d97e18a071059a2c0045978e">
+        <dex dex="C:\Users\Sagar\Documents\nhacks16\nhacks16-huntify\app\build\intermediates\pre-dexed\debug\classes-7e8e87a58b2c02d6d62cee5a4d3fbcce77789439.jar" />
+    </item>
+    <item
+        jar="C:\Users\Sagar\Documents\nhacks16\nhacks16-huntify\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\23.2.1\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="673d77a5bbddd766037f088e775df525c46407f0">
+        <dex dex="C:\Users\Sagar\Documents\nhacks16\nhacks16-huntify\app\build\intermediates\pre-dexed\debug\classes-a4bc20df1ce4db2d36766c57de95a79882df3465.jar" />
+    </item>
+    <item
+        jar="C:\Users\Sagar\Documents\nhacks16\nhacks16-huntify\app\build\intermediates\exploded-aar\com.github.alamkanak\android-week-view\1.2.6\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="393eb85d65baa2c3702efdf699832498f8b51bf1">
+        <dex dex="C:\Users\Sagar\Documents\nhacks16\nhacks16-huntify\app\build\intermediates\pre-dexed\debug\classes-51e24e871e32d6df94465b395a70284046f04d2f.jar" />
+    </item>
+    <item
+        jar="C:\Users\Sagar\Documents\nhacks16\nhacks16-huntify\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.2.1\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="e4d0cbb0b999604b349062f0214a0a228a7fd151">
+        <dex dex="C:\Users\Sagar\Documents\nhacks16\nhacks16-huntify\app\build\intermediates\pre-dexed\debug\classes-80e3804d63e9f2e2fb72ae777f553f49f3147792.jar" />
+    </item>
+    <item
+        jar="C:\Users\Sagar\Documents\nhacks16\nhacks16-huntify\app\build\intermediates\exploded-aar\com.facebook.android\audience-network-sdk\4.10.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="1085cfc61ef6fda7fc88f487e4a9cf35f4743225">
+        <dex dex="C:\Users\Sagar\Documents\nhacks16\nhacks16-huntify\app\build\intermediates\pre-dexed\debug\classes-93027e0b6c140d9daf7d448ad29c84a6aa9376cf.jar" />
+    </item>
+    <item
+        jar="C:\Users\Sagar\Documents\nhacks16\nhacks16-huntify\app\build\intermediates\exploded-aar\com.android.support\design\23.2.1\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="72961d8b453b46e277702f18de9d210bc019e36e">
+        <dex dex="C:\Users\Sagar\Documents\nhacks16\nhacks16-huntify\app\build\intermediates\pre-dexed\debug\classes-a78a12c16ab0597e361798d67bbb281ff1882f2b.jar" />
+    </item>
+    <item
+        jar="C:\Users\Sagar\.gradle\caches\modules-2\files-2.1\com.parse.bolts\bolts-applinks\1.3.0\bc535105332645408ef5f1380215cc954b842178\bolts-applinks-1.3.0.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="bc535105332645408ef5f1380215cc954b842178">
+        <dex dex="C:\Users\Sagar\Documents\nhacks16\nhacks16-huntify\app\build\intermediates\pre-dexed\debug\bolts-applinks-1.3.0-c6a9db1ce89f7b64cc1640b28bf33a5a5d13af06.jar" />
+    </item>
+    <item
+        jar="C:\Users\Sagar\Documents\nhacks16\nhacks16-huntify\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-appindexing\8.1.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="4477ea44f5ec5ad064022a22691732d7638ff197">
+        <dex dex="C:\Users\Sagar\Documents\nhacks16\nhacks16-huntify\app\build\intermediates\pre-dexed\debug\classes-4d232b372aa619527048c36b36e61a79698b763f.jar" />
+    </item>
+    <item
+        jar="C:\Users\Sagar\Documents\nhacks16\nhacks16-huntify\app\build\intermediates\exploded-aar\com.android.support\support-v4\24.0.0-alpha1\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="9aaaea3a89040f8176f810c85e288fc74d5d1f12">
+        <dex dex="C:\Users\Sagar\Documents\nhacks16\nhacks16-huntify\app\build\intermediates\pre-dexed\debug\classes-60a1d68e7e61447391c637034045dcbc7e0bfec1.jar" />
+    </item>
+    <item
+        jar="C:\Users\Sagar\Documents\nhacks16\nhacks16-huntify\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\23.2.1\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="3469cb457f10f74c28cbc05f069b6c894f6cbdd0">
+        <dex dex="C:\Users\Sagar\Documents\nhacks16\nhacks16-huntify\app\build\intermediates\pre-dexed\debug\classes-2362e9bff369a11960147cb2061f00433787b1b0.jar" />
     </item>
 
 </items>
