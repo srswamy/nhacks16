@@ -1,6 +1,9 @@
 package com.nhacks.share.Adapters;
 
 import android.content.Context;
+import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,6 +11,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.nhacks.share.Fragments.AllBooksFragment;
+import com.nhacks.share.Fragments.BookDetailsFragment;
 import com.nhacks.share.Objects.RecyclerViewRow;
 import com.nhacks.share.R;
 
@@ -21,11 +26,12 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     private LayoutInflater inflater;
     List<RecyclerViewRow> data = Collections.emptyList();
     Context context;
-
-    public RecyclerViewAdapter(Context context, List<RecyclerViewRow> data) {
+    FragmentManager fManager;
+    public RecyclerViewAdapter(Context context, List<RecyclerViewRow> data, FragmentManager fManager) {
         inflater = LayoutInflater.from(context);
         this.data = data;
         this.context = context;
+        this.fManager = fManager;
     }
 
     public void delete(int pos) {
@@ -121,7 +127,15 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    Fragment newFragment;
+                    newFragment = BookDetailsFragment.getInstance(0);
+                    Bundle bundle = new Bundle();
+                    bundle.putString("user_book_id", data.get(getPosition()).getUserBookId());
+                    newFragment.setArguments(bundle);
 
+                    fManager.beginTransaction()
+                            .replace(R.id.fragment, newFragment)
+                            .commit();
                 }
             });
 

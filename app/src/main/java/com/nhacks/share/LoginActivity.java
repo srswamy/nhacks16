@@ -138,8 +138,8 @@ public class LoginActivity extends Activity {
 
                 progressDialog = new ProgressDialog(LoginActivity.this);
                 progressDialog.setMessage("Loading...");
-                progressDialog.show();
-
+                progressDialog.hide();
+                btnLogin.setVisibility(View.GONE);
                 loginButton.performClick();
 
                 loginButton.setPressed(true);

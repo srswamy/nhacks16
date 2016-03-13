@@ -11,18 +11,17 @@ import android.widget.TextView;
 
 import com.nhacks.share.R;
 
-import org.json.JSONArray;
-
 /**
- * Created by Sagar on 3/12/2016.
+ * Created by Sagar on 3/13/2016.
  */
-public class TimeViewAdapter extends RecyclerView.Adapter<TimeViewAdapter.MyViewHolder> {
+public class TimeViewRenterAdapter extends RecyclerView.Adapter<TimeViewRenterAdapter.MyViewHolder> {
     public int[] times;
     private LayoutInflater inflater;
     Context context;
     int[] availableHours;
+    public int[] pickedTimes = new int[24];
 
-    public TimeViewAdapter(FragmentActivity activity, int[] times, int[] availableTimes) {
+    public TimeViewRenterAdapter(FragmentActivity activity, int[] times, int[] availableTimes) {
         super();
         this.times = times;
         this.context = activity;
@@ -32,7 +31,7 @@ public class TimeViewAdapter extends RecyclerView.Adapter<TimeViewAdapter.MyView
 
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = inflater.inflate(R.layout.l_time_row, parent, false);
+        View view = inflater.inflate(R.layout.l_renter_item_row, parent, false);
 
         MyViewHolder holder = new MyViewHolder(view);
         return holder;
@@ -55,8 +54,16 @@ public class TimeViewAdapter extends RecyclerView.Adapter<TimeViewAdapter.MyView
 
         if (times[position] == 1) {
             holder.bar.setVisibility(View.VISIBLE);
+            holder.bar.setBackgroundColor(Color.GREEN);
         } else {
             holder.bar.setVisibility(View.GONE);
+        }
+
+        if (pickedTimes[position] == 1) {
+            holder.bar.setVisibility(View.VISIBLE);
+            holder.bar.setBackgroundColor(Color.BLUE);
+        } else {
+            holder.bar.setBackgroundColor(Color.GREEN);
         }
 
     }
@@ -88,13 +95,14 @@ public class TimeViewAdapter extends RecyclerView.Adapter<TimeViewAdapter.MyView
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    if (bar.getVisibility() == View.GONE) {
-                        bar.setVisibility(View.VISIBLE);
-                        times[getPosition()] = 1;
-                    } else {
+                    if (bar.getVisibility() == View.VISIBLE) {
+                        bar.setBackgroundColor(Color.BLUE);
+                        pickedTimes[getPosition()] = 1;
+                    }else {
                         bar.setVisibility(View.GONE);
-                        times[getPosition()] = 0;
+                        pickedTimes[getPosition()] = 0;
                     }
+
                 }
 
             });
@@ -110,6 +118,5 @@ public class TimeViewAdapter extends RecyclerView.Adapter<TimeViewAdapter.MyView
         }
         return false;
     }
-
 
 }

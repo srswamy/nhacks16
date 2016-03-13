@@ -36,7 +36,7 @@ public class MyFragment extends Fragment {
         View layout = inflater.inflate(R.layout.fragment_my, container, false);
         Bundle bundle = getArguments();
 
-        adapter = new RecyclerViewAdapter(getActivity(), getData());
+        adapter = new RecyclerViewAdapter(getActivity(), getData(), getFragmentManager());
         recyclerView = (RecyclerView) layout.findViewById(R.id.recyclerView);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));

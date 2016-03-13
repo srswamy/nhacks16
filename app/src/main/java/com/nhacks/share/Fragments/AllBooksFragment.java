@@ -75,7 +75,7 @@ public class AllBooksFragment extends Fragment {
         //userId = sharedpreferences.getString("user_id", "");
         userId = "10";
         getData();
-        adapter = new RecyclerViewAdapter(getActivity(), mData);
+        adapter = new RecyclerViewAdapter(getActivity(), mData, getFragmentManager());
         recyclerView = (RecyclerView) layout.findViewById(R.id.recyclerView);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
@@ -85,7 +85,6 @@ public class AllBooksFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getContext(), AddBookForRentActivity.class);
-
                 startActivity(intent);
             }
         });
@@ -97,7 +96,7 @@ public class AllBooksFragment extends Fragment {
         final List<RecyclerViewRow> data = new ArrayList<>();
         RequestQueue queue = Volley.newRequestQueue(getContext());
 
-        StringRequest myReq = new StringRequest(Request.Method.GET, "http://52.37.205.141:3000/api/v1/books/available?user_id=" + userId, new Response.Listener<String>() {
+        StringRequest myReq = new StringRequest(Request.Method.GET, "http://52.37.205.141:3001/api/v1/books/available?user_id=" + userId, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 String t = "";

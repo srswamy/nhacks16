@@ -79,7 +79,7 @@ public class MainActivity extends ActionBarActivity {
 
             RequestQueue queue = Volley.newRequestQueue(this);
 
-            StringRequest myReq = new StringRequest(Request.Method.POST,"http://52.37.205.141:3000/api/v1/users", new Response.Listener<String>() {
+            StringRequest myReq = new StringRequest(Request.Method.POST,"http://52.37.205.141:3001/api/v1/users", new Response.Listener<String>() {
                 @Override
                 public void onResponse(String response) {
                     String t = "";

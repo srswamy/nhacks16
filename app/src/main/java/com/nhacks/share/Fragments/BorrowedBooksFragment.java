@@ -17,8 +17,13 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.google.gson.Gson;
 import com.nhacks.share.Adapters.RecyclerViewAdapter;
 import com.nhacks.share.AddBookForRentActivity;
@@ -32,7 +37,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by Sagar on 3/13/2016.
@@ -46,6 +53,8 @@ public class BorrowedBooksFragment extends Fragment {
     private FloatingActionButton mFloatingButton;
     public static final String MY_PREFS_NAME = "MyPrefsFile";
     String userId;
+    String[] categories;
+
     public static BorrowedBooksFragment getInstance(int position) {
         BorrowedBooksFragment myFragment = new BorrowedBooksFragment();
         Bundle args = new Bundle();
@@ -62,12 +71,13 @@ public class BorrowedBooksFragment extends Fragment {
         setHasOptionsMenu(true);
         final SharedPreferences sharedpreferences = getActivity().getSharedPreferences(MY_PREFS_NAME, getActivity().MODE_PRIVATE);
         userId = sharedpreferences.getString("user_id", "");
+        categories = getResources().getStringArray(R.array.categories);
 
         mData = getData();
-        initialData = getData();
+        initialData = new ArrayList<>();
         NetworkRequestManager.init(getContext());
 
-        adapter = new RecyclerViewAdapter(getActivity(), mData);
+        adapter = new RecyclerViewAdapter(getActivity(), mData, getFragmentManager());
         recyclerView = (RecyclerView) layout.findViewById(R.id.recyclerView);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
@@ -77,24 +87,64 @@ public class BorrowedBooksFragment extends Fragment {
 
     public List<RecyclerViewRow> getData() {
 
-        List<RecyclerViewRow> data = getBorrowedBooksResponse("/api/v1/users/" + userId +"/borrowed");
+        List<RecyclerViewRow> data = getBorrowedBooksResponse("http://52.37.205.141:3001/api/v1/users/" + userId +"/borrowed");
 
         return data;
     }
 
     public List<RecyclerViewRow> getBorrowedBooksResponse(String url) {
-        List<RecyclerViewRow> data = new ArrayList<>();
-        NetworkRequestManager.addRequests(NetworkRequestBuilder.getRawJSONRequest(url, new Response.Listener<JSONObject>() {
+        final List<RecyclerViewRow> data = new ArrayList<>();
+        RequestQueue queue = Volley.newRequestQueue(getContext());
+
+        StringRequest myReq = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
             @Override
-            public void onResponse(JSONObject response) {
+            public void onResponse(String response) {
                 String t = "";
+                JSONObject obj;
+                try {
+                    obj = new JSONObject(response);
+                    String available_books = obj.getString("books");
+                    JSONArray jArray = new JSONArray(available_books);
+                    for (int i = 0; i < jArray.length(); i++) {
+                        JSONObject object = new JSONObject(jArray.get(i).toString());
+                        //JSONObject bookObject = new JSONObject(object.getString("book"));
+                        String id = object.getString("id");
+                        String name = object.getString("name");
+                        String category_id = object.getString("category_id");
+                        String edition = object.getString("edition");
+                        RecyclerViewRow current = new RecyclerViewRow();
+                        current.setEdition(edition);
+                        current.setTitle(name);
+                        current.setCategory(categories[Integer.valueOf(category_id)-1]);
+                        //current.iconId = icons[i % 3];
+
+                        data.add(current);
+                        initialData.add(current);
+                    }
+                    adapter.update(data);
+                }  catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+                //mPostCommentResponse.requestCompleted();
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+                String g = "";
+                //mPostCommentResponse.requestEndedWithError(error);
 
             }
-        }));
+        }) {
+
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("Content-Type", "application/x-www-form-urlencoded");
+                return params;
+            }
+        };
+        queue.add(myReq);
         return data;
     }
 
