@@ -33,4 +33,5 @@ dependencies {
     compile 'com.github.alamkanak:android-week-view:1.2.6'
     compile 'com.mcxiaoke.volley:library:1.0.15'
     compile 'com.google.code.gson:gson:2.2.4'
+    compile 'com.github.rahatarmanahmed:circularprogressview:2.4.0'
 }

@@ -3,6 +3,7 @@ package com.nhacks.share.Fragments;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
@@ -16,6 +17,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -24,6 +26,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.github.rahatarmanahmed.cpv.CircularProgressView;
 import com.google.gson.Gson;
 import com.nhacks.share.Adapters.RecyclerViewAdapter;
 import com.nhacks.share.AddBookForRentActivity;
@@ -54,6 +57,14 @@ public class AllBooksFragment extends Fragment {
     public static final String MY_PREFS_NAME = "MyPrefsFile";
     String userId;
     String[] categories;
+    CircularProgressView progressView;
+    private static final int PROGRESS = 0x1;
+
+    private ProgressBar mProgress;
+    private int mProgressStatus = 0;
+
+    private Handler mHandler = new Handler();
+
     public static AllBooksFragment getInstance(int position) {
         AllBooksFragment myFragment = new AllBooksFragment();
         Bundle args = new Bundle();
@@ -79,6 +90,10 @@ public class AllBooksFragment extends Fragment {
         recyclerView = (RecyclerView) layout.findViewById(R.id.recyclerView);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+
+        CircularProgressView progressView = (CircularProgressView) layout.findViewById(R.id.progress_view);
+        progressView.startAnimation();
+        progressView.setVisibility(View.VISIBLE);
 
         mFloatingButton = (FloatingActionButton) layout.findViewById(R.id.floatingAddBookToRentButton);
         mFloatingButton.setOnClickListener(new View.OnClickListener() {
@@ -124,6 +139,7 @@ public class AllBooksFragment extends Fragment {
                         data.add(current);
                         initialData.add(current);
                     }
+                    progressView.setVisibility(View.GONE);
                     adapter.update(data);
                 } catch (JSONException e) {
                     e.printStackTrace();

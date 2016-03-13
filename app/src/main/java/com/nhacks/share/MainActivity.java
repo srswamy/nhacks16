@@ -132,7 +132,7 @@ public class MainActivity extends ActionBarActivity {
 
         mDrawerList = (RecyclerView) findViewById(R.id.drawerList);
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-        mAdapter = new DrawerRecyclerViewAdapter(getData(), name, email, 0, getSupportFragmentManager(), getSupportActionBar(), names, mDrawerLayout);
+        mAdapter = new DrawerRecyclerViewAdapter(MainActivity.this, getData(), name, email, 0, getSupportFragmentManager(), getSupportActionBar(), names, mDrawerLayout);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         mDrawerList.setLayoutManager(layoutManager);
