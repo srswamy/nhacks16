@@ -70,13 +70,12 @@ public class AddBookDetailsFragment extends Fragment {
         calenderView = (ImageView) layout.findViewById(R.id.datePicker);
         mNextDay = (ImageView) layout.findViewById(R.id.nextDayBtn);
         mPrevDay = (ImageView) layout.findViewById(R.id.prevDayBtn);
-        Button addBook = (Button) layout.findViewById(R.id.add_btn);
-        Button cancel = (Button) layout.findViewById(R.id.cancel_btn);
-        mRecyclerView = (RecyclerView) layout.findViewById(R.id.logsRecyclerView);
+        mRecyclerView = (RecyclerView) layout.findViewById(R.id.timeRecyclerView);
 
-        addBook.setOnClickListener(new View.OnClickListener() {
+        mFloatingSaveButton = (FloatingActionButton) layout.findViewById(R.id.floatingSaveBookButton);
+        mFloatingSaveButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(View v) {
                 Book book = new Book();
                 String name = bookName.getText().toString();
                 String edition = bookEdition.getText().toString();
@@ -96,13 +95,6 @@ public class AddBookDetailsFragment extends Fragment {
                 if (!school.equals("")) {
 
                 }
-            }
-        });
-
-        mFloatingSaveButton = (FloatingActionButton) layout.findViewById(R.id.floatingSaveBookButton);
-        mFloatingSaveButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
                 getActivity().finish();
             }
         });
@@ -156,9 +148,10 @@ public class AddBookDetailsFragment extends Fragment {
                 mSelectedDate = getNextDayDate(mSelectedDate);
             }
         });
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        //mAdapter = new TimeViewAdapter(getActivity(), null);
-        //mRecyclerView.setAdapter(mAdapter);
+        mAdapter = new TimeViewAdapter(getActivity(), getTimes());
+        mRecyclerView.setAdapter(mAdapter);
 
     }
 
@@ -199,11 +192,13 @@ public class AddBookDetailsFragment extends Fragment {
         mDateView.setText(dateStr);
     }
 
-    public List<AvailableTime> getTimes(){
+    public int[] getTimes(){
 
-        List<AvailableTime> times = new ArrayList<>();
-
-        return times;
+        int[] timesAvailable = new int[24];
+        for(int i = 0; i < 24; i++){
+            timesAvailable[i] = 0;
+        }
+        return timesAvailable;
     }
 
     protected String getEventTitle(Calendar time) {

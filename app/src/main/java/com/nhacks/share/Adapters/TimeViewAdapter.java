@@ -8,6 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.nhacks.share.Fragments.AddBookDetailsFragment;
@@ -19,12 +20,13 @@ import java.util.List;
  * Created by Sagar on 3/12/2016.
  */
 public class TimeViewAdapter extends RecyclerView.Adapter<TimeViewAdapter.MyViewHolder> {
-    List<String> timeData;
+    int[] times;
     private LayoutInflater inflater;
     Context context;
-    public TimeViewAdapter(FragmentActivity activity, List<String> timeData) {
+
+    public TimeViewAdapter(FragmentActivity activity, int[] times) {
         super();
-        this.timeData = timeData;
+        this.times = times;
         this.context = activity;
         inflater = LayoutInflater.from(context);
     }
@@ -37,39 +39,56 @@ public class TimeViewAdapter extends RecyclerView.Adapter<TimeViewAdapter.MyView
         return holder;
     }
 
-    public void updateList(List<String> timeData){
-        this.timeData.clear();
-        this.timeData = timeData;
-    }
-
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
-        String current = timeData.get(position);
-        holder.tv.setText(current);
+        String t = "";
+        if(position == 0){
+            t = "12:00 AM";
+        }
+        else if (position < 12){
+            t = t + Integer.toString(position) + ":00 AM";
+        }
+        else if (position == 12) {
+            t = "12:00 PM";
+        }
+        else{
+            t = t + Integer.toString(position - 12) + ":00 PM";
+        }
+
+        holder.tv.setText(t);
+
+        if (times[position] == 1) {
+            holder.bar.setVisibility(View.VISIBLE);
+        } else {
+            holder.bar.setVisibility(View.GONE);
+        }
+
     }
 
     @Override
     public int getItemCount() {
-        return timeData.size();
+        return 24;
     }
 
-    class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+    class MyViewHolder extends RecyclerView.ViewHolder {
         TextView tv;
+        View bar;
 
         public MyViewHolder(View itemView) {
             super(itemView);
-
-            tv = (TextView) itemView.findViewById(R.id.name);
-            tv.setOnClickListener(this);
+            bar = (View) itemView.findViewById(R.id.colored_bar);
+            tv = (TextView) itemView.findViewById(R.id.time1am);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (bar.getVisibility() == View.GONE) {
+                        bar.setVisibility(View.VISIBLE);
+                    } else {
+                        bar.setVisibility(View.GONE);
+                    }
+                }
+            });
         }
 
-        @Override
-        public void onClick(View view) {
-            AddBookDetailsFragment myFragment = new AddBookDetailsFragment();
-
-            Bundle args = new Bundle();
-            args.putString("category", timeData.get(getPosition()));
-            myFragment.setArguments(args);
-        }
     }
 }
