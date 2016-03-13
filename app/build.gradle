@@ -31,4 +31,6 @@ dependencies {
     compile 'com.amulyakhare:com.amulyakhare.textdrawable:1.0.1'
     compile 'com.android.support:design:23.+'
     compile 'com.github.alamkanak:android-week-view:1.2.6'
+    compile 'com.mcxiaoke.volley:library:1.0.15'
+    compile 'com.google.code.gson:gson:2.2.4'
 }

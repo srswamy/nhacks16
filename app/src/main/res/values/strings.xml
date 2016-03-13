@@ -28,4 +28,19 @@
     <string name="action_search">Search</string>
     <string name="title_activity_add_book_for_rent">AddBookForRent</string>
 
+    <string-array name="monthNames">
+        <item>January</item>
+        <item>February</item>
+        <item>March</item>
+        <item>April</item>
+        <item>May</item>
+        <item>June</item>
+        <item>July</item>
+        <item>August</item>
+        <item>September</item>
+        <item>October</item>
+        <item>November</item>
+        <item>December</item>
+    </string-array>
+
 </resources>
