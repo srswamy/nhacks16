@@ -16,6 +16,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -24,6 +25,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.github.rahatarmanahmed.cpv.CircularProgressView;
 import com.google.gson.Gson;
 import com.nhacks.share.Adapters.MyBooksRecyclerAdapter;
 import com.nhacks.share.AddBookForRentActivity;
@@ -34,6 +36,7 @@ import com.nhacks.share.R;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -48,14 +51,15 @@ public class MyBooksFragment extends Fragment {
     private RecyclerView recyclerView;
     private List<MyBooksRecyclerRow> mData;
     private List<MyBooksRecyclerRow> initialData;
-    private FloatingActionButton mFloatingButton;
+    private CircularProgressView progressView;
+    private TextView emptyTextView;
 
     private String name = "";
     private String email = "";
     private String facebookId = "";
     private String userId = "";
 
-    public static final String API_PREFIX = "http://52.37.205.141:3011";
+    public static final String API_PREFIX = "http://52.37.205.141:3001";
     private static final String MY_PREFS_NAME = "MyPrefsFile";
 
     // TODO: DELETE ME ONCE THE RESOURCE LIST IS MADE
@@ -71,7 +75,7 @@ public class MyBooksFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View layout = inflater.inflate(R.layout.fragment_my, container, false);
+        View layout = inflater.inflate(R.layout.fragment_my_books, container, false);
 
         SharedPreferences sharedpreferences = getActivity().getSharedPreferences(MY_PREFS_NAME, getActivity().MODE_PRIVATE);
         name = sharedpreferences.getString("name_key", "");
@@ -79,6 +83,11 @@ public class MyBooksFragment extends Fragment {
         facebookId = sharedpreferences.getString("id_key", "");
         userId = sharedpreferences.getString("user_id", "");
 
+        progressView = (CircularProgressView) layout.findViewById(R.id.progress_view);
+        progressView.startAnimation();
+        progressView.setVisibility(View.VISIBLE);
+
+        emptyTextView = (TextView) layout.findViewById(R.id.my_books_empty);
 
         setHasOptionsMenu(true);
 
@@ -94,16 +103,6 @@ public class MyBooksFragment extends Fragment {
         recyclerView = (RecyclerView) layout.findViewById(R.id.recyclerView);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-
-        mFloatingButton = (FloatingActionButton) layout.findViewById(R.id.floatingAddBookToRentButton);
-        mFloatingButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getContext(), AddBookForRentActivity.class);
-
-                startActivity(intent);
-            }
-        });
 
         return layout;
     }
@@ -121,6 +120,11 @@ public class MyBooksFragment extends Fragment {
                             getDataFromJson(response);
                             adapter.updateData(mData);
                             adapter.notifyDataSetChanged();
+                            progressView.setVisibility(View.GONE);
+
+                            if (mData.isEmpty()) {
+                                emptyTextView.setText("You don't have any books out for rental. Post one in the Home page!");
+                            }
                         } catch (JSONException e) {
                             Toast.makeText(getContext(), "Oops, looks like we ran into an issue!", Toast.LENGTH_SHORT).show();
                         }
@@ -130,6 +134,7 @@ public class MyBooksFragment extends Fragment {
                 {
                     @Override
                 public void onErrorResponse(VolleyError error) {
+                        progressView.setVisibility(View.GONE);
                         Toast.makeText(getContext(), "Oops, ran into an error while grabbing some data!", Toast.LENGTH_SHORT).show();
                     }
                 }

@@ -65,6 +65,13 @@
         <dex dex="/Users/srswamy/Dev/Android/nhacks16/app/build/intermediates/pre-dexed/debug/classes-c42a22b860d9b2857f7780359b2d409d94ad60ea.jar" />
     </item>
     <item
+        jar="/Users/srswamy/Dev/Android/nhacks16/app/build/intermediates/exploded-aar/com.joanzapata.iconify/android-iconify/2.2.1/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="84fa37db1e60ca85901041f80355eb1a21be9ecd">
+        <dex dex="/Users/srswamy/Dev/Android/nhacks16/app/build/intermediates/pre-dexed/debug/classes-af4522e10ea0272d0bc649332500b593efe4e6d0.jar" />
+    </item>
+    <item
         jar="/Users/srswamy/Dev/Android/nhacks16/app/build/intermediates/exploded-aar/com.facebook.android/audience-network-sdk/4.10.0/jars/classes.jar"
         jumboMode="false"
         revision="23.0.1"
@@ -93,6 +100,13 @@
         <dex dex="/Users/srswamy/Dev/Android/nhacks16/app/build/intermediates/pre-dexed/debug/classes-b9f964d41e07b988a7fc017d19e18fa3d81e53e1.jar" />
     </item>
     <item
+        jar="/Users/srswamy/Dev/Android/nhacks16/app/build/intermediates/exploded-aar/com.joanzapata.iconify/android-iconify-fontawesome/2.2.1/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="af20faf2a6fff6cac01bb9ee4130ee942a29ec22">
+        <dex dex="/Users/srswamy/Dev/Android/nhacks16/app/build/intermediates/pre-dexed/debug/classes-f3f813d675df20dc0bd68f287df10f61eef1a452.jar" />
+    </item>
+    <item
         jar="/Users/srswamy/.gradle/caches/modules-2/files-2.1/com.parse.bolts/bolts-applinks/1.3.0/bc535105332645408ef5f1380215cc954b842178/bolts-applinks-1.3.0.jar"
         jumboMode="false"
         revision="23.0.1"
@@ -112,6 +126,13 @@
         revision="23.0.1"
         sha1="8c108c22c99e794eff255bb34d2a461200c4cbb0">
         <dex dex="/Users/srswamy/Dev/Android/nhacks16/app/build/intermediates/pre-dexed/debug/classes-324fef75835d121ec59d07dcecb17a32fb2dbab3.jar" />
+    </item>
+    <item
+        jar="/Users/srswamy/Dev/Android/nhacks16/app/build/intermediates/exploded-aar/com.github.rahatarmanahmed/circularprogressview/2.4.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="9a883402815cf6ab7b526e84bbd1d8752f075cd3">
+        <dex dex="/Users/srswamy/Dev/Android/nhacks16/app/build/intermediates/pre-dexed/debug/classes-7bfcbe9c34826da6849d3e7d68c94a4d89e7243c.jar" />
     </item>
     <item
         jar="/Users/srswamy/.gradle/caches/modules-2/files-2.1/com.mcxiaoke.volley/library/1.0.15/9093a362d18c5f81f58e49d86dece57d9b6e1cb7/library-1.0.15.jar"

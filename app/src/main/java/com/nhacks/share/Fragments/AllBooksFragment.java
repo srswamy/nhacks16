@@ -113,7 +113,7 @@ public class AllBooksFragment extends Fragment {
         final List<RecyclerViewRow> data = new ArrayList<>();
         RequestQueue queue = Volley.newRequestQueue(getContext());
 
-        StringRequest myReq = new StringRequest(Request.Method.GET, "http://52.37.205.141:3011/api/v1/books/available?user_id=" + userId, new Response.Listener<String>() {
+        StringRequest myReq = new StringRequest(Request.Method.GET, "http://52.37.205.141:3001/api/v1/books/available?user_id=" + userId, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 String t = "";
@@ -152,6 +152,7 @@ public class AllBooksFragment extends Fragment {
             @Override
             public void onErrorResponse(VolleyError error) {
                 String g = "";
+                progressView.setVisibility(View.GONE);
                 //mPostCommentResponse.requestEndedWithError(error);
 
             }
