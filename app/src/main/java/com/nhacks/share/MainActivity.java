@@ -19,16 +19,31 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.nhacks.share.Adapters.DrawerRecyclerViewAdapter;
+import com.nhacks.share.Adapters.RecyclerViewAdapter;
 import com.nhacks.share.Fragments.AllBooksFragment;
 import com.nhacks.share.Fragments.MyFragment;
 import com.nhacks.share.Fragments.SampleFragment;
 import com.nhacks.share.Fragments.SlidingTabsFragment;
+import com.nhacks.share.Network.NetworkRequestBuilder;
+import com.nhacks.share.Network.NetworkRequestManager;
 import com.nhacks.share.Objects.DrawerRow;
 import com.nhacks.share.ui.SlidingTabLayout;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class MainActivity extends ActionBarActivity {
 
@@ -61,12 +76,49 @@ public class MainActivity extends ActionBarActivity {
             facebookId = extras.getString("user_facebook_id");
             email = extras.getString("user_email");
             name = extras.getString("user_name");
+
+            RequestQueue queue = Volley.newRequestQueue(this);
+
+            StringRequest myReq = new StringRequest(Request.Method.POST,"http://52.37.205.141:3000/api/v1/users", new Response.Listener<String>() {
+                @Override
+                public void onResponse(String response) {
+                    String t = "";
+                    //mPostCommentResponse.requestCompleted();
+                }
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    String g = "";
+                    //mPostCommentResponse.requestEndedWithError(error);
+                }
+            }){
+                @Override
+                protected Map<String,String> getParams(){
+                    Map<String,String> params = new HashMap<String, String>();
+                    params.put("name", name);
+                    params.put("facebook_id", facebookId);
+                    params.put("school", "University of Waterloo");
+                    params.put("email", email);
+                    params.put("location", "Waterloo");
+
+                    return params;
+                }
+
+                @Override
+                public Map<String, String> getHeaders() throws AuthFailureError {
+                    Map<String,String> params = new HashMap<String, String>();
+                    params.put("Content-Type","application/x-www-form-urlencoded");
+                    return params;
+                }
+            };
+            queue.add(myReq);
         }
         else{
             name = sharedpreferences.getString("name_key", "");
             email = sharedpreferences.getString("email_key", "");
             facebookId = sharedpreferences.getString("id_key", "");
         }
+
 
         mDrawerList = (RecyclerView) findViewById(R.id.drawerList);
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);

@@ -43,51 +43,57 @@
             android:hint="School Name"
             android:inputType="text" />
 
-        <RelativeLayout
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal"
+            android:paddingBottom="5dp"
+            android:paddingTop="5dp"
+            android:background="@android:color/transparent">
+
+            <ImageButton
+                android:id="@+id/prevDayBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="20dp"
+                android:background="#00000000"
+                android:src="@mipmap/ic_navigate_before_black_36dp" />
+
+            <TextView
+                android:id="@+id/dateText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="Monday, October 2"
+                android:textAllCaps="true"
+                android:textColor="@color/primaryText"
+                android:textSize="16dp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/datePicker"
+                android:layout_width="wrap_content"
+                android:layout_height="24dp"
+                android:layout_gravity="center_vertical"
+                android:paddingLeft="10dp"
+                android:src="@mipmap/ic_today_black_36dp" />
+
+            <ImageButton
+                android:id="@+id/nextDayBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:background="#00000000"
+                android:src="@mipmap/ic_navigate_next_black_36dp" />
+
+        </LinearLayout>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/timeRecyclerView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="20dp">
-
-            <Button
-                android:id="@+id/cancel_btn"
-                android:layout_width="100dp"
-                android:layout_height="40dp"
-                android:layout_gravity="left"
-                android:background="@drawable/custom_btn_bg"
-                android:gravity="center"
-                android:text="Cancel"
-                android:textColor="#fff"
-                android:textSize="16dp" />
-
-            <Button
-                android:id="@+id/add_btn"
-                android:layout_width="100dp"
-                android:layout_height="40dp"
-                android:layout_alignParentEnd="true"
-                android:background="@drawable/custom_btn_bg"
-                android:gravity="center"
-                android:text="Add"
-                android:textColor="#fff"
-                android:textSize="16dp" />
-        </RelativeLayout>
-
-        <com.alamkanak.weekview.WeekView
-            android:id="@+id/weekView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:eventTextColor="@android:color/white"
-            app:textSize="12sp"
-            app:hourHeight="60dp"
-            app:headerColumnPadding="8dp"
-            app:headerColumnTextColor="#8f000000"
-            app:headerRowPadding="12dp"
-            app:columnGap="8dp"
-            app:noOfVisibleDays="3"
-            app:headerRowBackgroundColor="#ffefefef"
-            app:dayBackgroundColor="#05000000"
-            app:todayBackgroundColor="#1848adff"
-            app:headerColumnBackground="#ffffffff"/>
-
+            android:padding="5dp" />
 
     </LinearLayout>
 
