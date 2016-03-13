@@ -80,6 +80,9 @@ public class AllBooksFragment extends Fragment {
         setHasOptionsMenu(true);
         mData = new ArrayList<>();
         initialData = new ArrayList<>();
+        progressView = (CircularProgressView) layout.findViewById(R.id.progress_view);
+        progressView.startAnimation();
+        progressView.setVisibility(View.VISIBLE);
         NetworkRequestManager.init(getContext());
         final SharedPreferences sharedpreferences = getActivity().getSharedPreferences(MY_PREFS_NAME, getActivity().MODE_PRIVATE);
         categories = getResources().getStringArray(R.array.categories);
@@ -90,10 +93,6 @@ public class AllBooksFragment extends Fragment {
         recyclerView = (RecyclerView) layout.findViewById(R.id.recyclerView);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-
-        CircularProgressView progressView = (CircularProgressView) layout.findViewById(R.id.progress_view);
-        progressView.startAnimation();
-        progressView.setVisibility(View.VISIBLE);
 
         mFloatingButton = (FloatingActionButton) layout.findViewById(R.id.floatingAddBookToRentButton);
         mFloatingButton.setOnClickListener(new View.OnClickListener() {
@@ -112,7 +111,7 @@ public class AllBooksFragment extends Fragment {
         final List<RecyclerViewRow> data = new ArrayList<>();
         RequestQueue queue = Volley.newRequestQueue(getContext());
 
-        StringRequest myReq = new StringRequest(Request.Method.GET, "http://52.37.205.141:3000/api/v1/books/available?user_id=" + userId, new Response.Listener<String>() {
+        StringRequest myReq = new StringRequest(Request.Method.GET, "http://52.37.205.141:3011/api/v1/books/available?user_id=" + userId, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 String t = "";
