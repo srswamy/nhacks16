@@ -1,6 +1,7 @@
 package com.nhacks.share;
 
 import android.content.SharedPreferences;
+import android.graphics.drawable.Drawable;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -16,8 +17,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ListView;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -26,14 +25,15 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.joanzapata.iconify.IconDrawable;
+import com.joanzapata.iconify.Iconify;
+import com.joanzapata.iconify.fonts.FontAwesomeIcons;
+import com.joanzapata.iconify.fonts.FontAwesomeModule;
 import com.nhacks.share.Adapters.DrawerRecyclerViewAdapter;
-import com.nhacks.share.Adapters.RecyclerViewAdapter;
 import com.nhacks.share.Fragments.AllBooksFragment;
 import com.nhacks.share.Fragments.MyFragment;
 import com.nhacks.share.Fragments.SampleFragment;
 import com.nhacks.share.Fragments.SlidingTabsFragment;
-import com.nhacks.share.Network.NetworkRequestBuilder;
-import com.nhacks.share.Network.NetworkRequestManager;
 import com.nhacks.share.Objects.DrawerRow;
 import com.nhacks.share.ui.SlidingTabLayout;
 
@@ -60,6 +60,7 @@ public class MainActivity extends ActionBarActivity {
     String email = "";
     String facebookId = "";
     public static final String MY_PREFS_NAME = "MyPrefsFile";
+    public static final String API_PREFIX = "http://52.37.205.141:3000";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -132,7 +133,8 @@ public class MainActivity extends ActionBarActivity {
 
         mDrawerList = (RecyclerView) findViewById(R.id.drawerList);
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-        mAdapter = new DrawerRecyclerViewAdapter(getData(), name, email, 0, getSupportFragmentManager(), getSupportActionBar(), names, mDrawerLayout);
+        Iconify.with(new FontAwesomeModule());
+        mAdapter = new DrawerRecyclerViewAdapter(MainActivity.this, getData(), name, email, 0, getSupportFragmentManager(), getSupportActionBar(), names, mDrawerLayout);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         mDrawerList.setLayoutManager(layoutManager);
@@ -226,10 +228,16 @@ public class MainActivity extends ActionBarActivity {
             DrawerRow current = new DrawerRow();
             current.name = names[i];
             if(current.name.equals("Home")){
-                current.iconId =R.mipmap.ic_launcher;
+                Drawable iconDrawable = new IconDrawable(this, FontAwesomeIcons.fa_home);
+                current.iconId = iconDrawable;
+            }
+            else if (current.name.equals("Logout")) {
+                Drawable iconDrawable = new IconDrawable(this, FontAwesomeIcons.fa_sign_out);
+                current.iconId = iconDrawable;
             }
             else{
-                current.iconId = R.mipmap.ic_launcher;
+                Drawable iconDrawable = new IconDrawable(this, FontAwesomeIcons.fa_list);
+                current.iconId = iconDrawable;
             }
             data.add(current);
         }

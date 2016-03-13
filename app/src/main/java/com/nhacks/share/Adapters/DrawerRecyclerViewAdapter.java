@@ -1,5 +1,7 @@
 package com.nhacks.share.Adapters;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Handler;
@@ -15,11 +17,15 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.amulyakhare.textdrawable.TextDrawable;
+import com.facebook.login.LoginManager;
 import com.nhacks.share.Fragments.AllBooksFragment;
+import com.nhacks.share.Fragments.MyBooksFragment;
 import com.nhacks.share.Fragments.BorrowedBooksFragment;
 import com.nhacks.share.Fragments.MyFragment;
 import com.nhacks.share.Fragments.SampleFragment;
 import com.nhacks.share.Fragments.SlidingTabsFragment;
+import com.nhacks.share.LoginActivity;
+import com.nhacks.share.MainActivity;
 import com.nhacks.share.Objects.DrawerRow;
 import com.nhacks.share.R;
 
@@ -40,8 +46,10 @@ public class DrawerRecyclerViewAdapter extends RecyclerView.Adapter<DrawerRecycl
     ActionBar aBar;
     String[] names;
     DrawerLayout dLayout;
+    Activity mActivity;
 
-    public DrawerRecyclerViewAdapter(List<DrawerRow> rows, String Name, String Email, int Profile, FragmentManager fragmentManager,ActionBar  aBar, String[] names, DrawerLayout drawerLayout) {
+    public DrawerRecyclerViewAdapter(Activity activity, List<DrawerRow> rows, String Name, String Email, int Profile, FragmentManager fragmentManager,ActionBar  aBar, String[] names, DrawerLayout drawerLayout) {
+        mActivity = activity;
         this.rows = rows;
         name = Name;
         email = Email;
@@ -88,11 +96,16 @@ public class DrawerRecyclerViewAdapter extends RecyclerView.Adapter<DrawerRecycl
                     newFragment = AllBooksFragment.getInstance(0);
                     break;
                 case 1:
-                    newFragment = AllBooksFragment.getInstance(0);
+                    newFragment = MyBooksFragment.getInstance(1);
                     break;
                 case 2:
                     newFragment = BorrowedBooksFragment.getInstance(0);
                     break;
+                case 3:
+                    LoginManager.getInstance().logOut();
+                    Intent intent = new Intent(mActivity, LoginActivity.class);
+                    mActivity.startActivity(intent);
+                    mActivity.finish();
             }
             aBar.setTitle(names[pos-2]);
 
@@ -141,7 +154,8 @@ public class DrawerRecyclerViewAdapter extends RecyclerView.Adapter<DrawerRecycl
     public void onBindViewHolder(DrawerRecyclerViewAdapter.MyViewHolder holder, int position) {
         if (holder.Holderid == 1) {
             holder.textView.setText(rows.get(position - 1).name);
-            holder.imageView.setImageResource(rows.get(position - 1).iconId);
+//            holder.imageView.setImageResource(rows.get(position - 1).iconId);
+            holder.imageView.setImageDrawable(rows.get(position - 1).iconId);
         } else {
 
             holder.Name.setText(name);

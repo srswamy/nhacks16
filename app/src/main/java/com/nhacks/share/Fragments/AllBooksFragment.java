@@ -3,6 +3,7 @@ package com.nhacks.share.Fragments;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
@@ -16,6 +17,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -24,11 +26,13 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.github.rahatarmanahmed.cpv.CircularProgressView;
 import com.google.gson.Gson;
+import com.nhacks.share.Adapters.MyBooksRecyclerAdapter;
 import com.nhacks.share.Adapters.RecyclerViewAdapter;
 import com.nhacks.share.AddBookForRentActivity;
-import com.nhacks.share.Network.NetworkRequestBuilder;
 import com.nhacks.share.Network.NetworkRequestManager;
+import com.nhacks.share.Objects.MyBooksRecyclerRow;
 import com.nhacks.share.Objects.RecyclerViewRow;
 import com.nhacks.share.R;
 
@@ -54,6 +58,14 @@ public class AllBooksFragment extends Fragment {
     public static final String MY_PREFS_NAME = "MyPrefsFile";
     String userId;
     String[] categories;
+    CircularProgressView progressView;
+    private static final int PROGRESS = 0x1;
+
+    private ProgressBar mProgress;
+    private int mProgressStatus = 0;
+
+    private Handler mHandler = new Handler();
+
     public static AllBooksFragment getInstance(int position) {
         AllBooksFragment myFragment = new AllBooksFragment();
         Bundle args = new Bundle();
@@ -69,7 +81,11 @@ public class AllBooksFragment extends Fragment {
         setHasOptionsMenu(true);
         mData = new ArrayList<>();
         initialData = new ArrayList<>();
+        progressView = (CircularProgressView) layout.findViewById(R.id.progress_view);
+        progressView.startAnimation();
+        progressView.setVisibility(View.VISIBLE);
         NetworkRequestManager.init(getContext());
+
         final SharedPreferences sharedpreferences = getActivity().getSharedPreferences(MY_PREFS_NAME, getActivity().MODE_PRIVATE);
         categories = getResources().getStringArray(R.array.categories);
         //userId = sharedpreferences.getString("user_id", "");
@@ -109,6 +125,8 @@ public class AllBooksFragment extends Fragment {
                         JSONObject object = new JSONObject(jArray.get(i).toString());
                         JSONObject bookObject = new JSONObject(object.getString("book"));
                         String user_book_id = object.getString("user_book_id");
+                        Double price = object.getDouble("price");
+                        Integer rentedCount = object.getInt("rented_count");
                         String id = bookObject.getString("id");
                         String name = bookObject.getString("name");
                         String category_id = bookObject.getString("category_id");
@@ -117,12 +135,15 @@ public class AllBooksFragment extends Fragment {
                         current.setEdition(edition);
                         current.setUserBookId(user_book_id);
                         current.setTitle(name);
-                        current.setCategory(categories[Integer.valueOf(category_id)-1]);
+                        current.setCategory(categories[Integer.valueOf(category_id) - 1]);
+                        current.setPrice(price);
+                        current.setRentedCount(rentedCount);
                         //current.iconId = icons[i % 3];
 
                         data.add(current);
                         initialData.add(current);
                     }
+                    progressView.setVisibility(View.GONE);
                     adapter.update(data);
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -134,6 +155,7 @@ public class AllBooksFragment extends Fragment {
             @Override
             public void onErrorResponse(VolleyError error) {
                 String g = "";
+                progressView.setVisibility(View.GONE);
                 //mPostCommentResponse.requestEndedWithError(error);
 
             }
@@ -149,20 +171,20 @@ public class AllBooksFragment extends Fragment {
         queue.add(myReq);
     }
 
-    private List<RecyclerViewRow> getDataFromJson(JSONArray courseArr) throws JSONException {
+    private List<MyBooksRecyclerRow> getDataFromJson(JSONArray courseArr) throws JSONException {
 
-        List<RecyclerViewRow> recyclerViewRowList = new ArrayList<>();
+        List<MyBooksRecyclerRow> myBooksRecyclerRowList = new ArrayList<>();
 
         for (int i = 0; i < courseArr.length(); i++) {
             JSONObject courseObj = courseArr.getJSONObject(i);
             Gson gson = new Gson();
-            RecyclerViewRow course;
-            course = gson.fromJson(String.valueOf(courseObj), RecyclerViewRow.class);
+            MyBooksRecyclerRow course;
+            course = gson.fromJson(String.valueOf(courseObj), MyBooksRecyclerRow.class);
 
-            recyclerViewRowList.add(course);
+            myBooksRecyclerRowList.add(course);
         }
 
-        return recyclerViewRowList;
+        return myBooksRecyclerRowList;
     }
 
     @Override

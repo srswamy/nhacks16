@@ -1,3 +1,5 @@
-# MaterialDesignTest
+# NHacks '16
 
-Material design navigation bar with sliding tabs framwork for Android
+Textbook sharing app
+Backend: RoR, MySQL
+Android client

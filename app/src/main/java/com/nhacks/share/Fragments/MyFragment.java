@@ -9,7 +9,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.nhacks.share.Adapters.MyBooksRecyclerAdapter;
 import com.nhacks.share.Adapters.RecyclerViewAdapter;
+import com.nhacks.share.Objects.MyBooksRecyclerRow;
 import com.nhacks.share.Objects.RecyclerViewRow;
 import com.nhacks.share.R;
 
