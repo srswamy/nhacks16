@@ -2,46 +2,144 @@
 <items version="2" >
 
     <item
-        jar="C:\Users\SagarkumarDave\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\23.1.0\support-annotations-23.1.0.jar"
+        jar="/Users/srswamy/Dev/Android/nhacks16/app/build/intermediates/exploded-aar/com.facebook.android/audience-network-sdk/4.10.0/jars/classes.jar"
         jumboMode="false"
         revision="23.0.1"
-        sha1="92e3fc113ec3ee36b64603a38857b95700025633">
-        <dex dex="C:\Users\SagarkumarDave\Documents\MaterialDesignTest\app\build\intermediates\pre-dexed\debug\support-annotations-23.1.0-d42b8f863ad1c7f8faeee3199a5a7c9660f83390.jar" />
+        sha1="1085cfc61ef6fda7fc88f487e4a9cf35f4743225">
+        <dex dex="/Users/srswamy/Dev/Android/nhacks16/app/build/intermediates/pre-dexed/debug/classes-fb080509c190b18cac53f524398d70a8bf3fb0be.jar" />
     </item>
     <item
-        jar="C:\Users\SagarkumarDave\Documents\MaterialDesignTest\app\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\23.1.0\jars\classes.jar"
+        jar="/Users/srswamy/Dev/Android/nhacks16/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.1.0/jars/classes.jar"
         jumboMode="false"
         revision="23.0.1"
-        sha1="3f151e49c316a5ab2c065969a3b3b55ef9b393fc">
-        <dex dex="C:\Users\SagarkumarDave\Documents\MaterialDesignTest\app\build\intermediates\pre-dexed\debug\classes-9d834e5fb72940eb4a9a3f488e5ce02777c34fba.jar" />
+        sha1="d0dda274b703dd9c5bb056867649d22b4171ae7d">
+        <dex dex="/Users/srswamy/Dev/Android/nhacks16/app/build/intermediates/pre-dexed/debug/classes-88546469d82e4cac44135a72963a511417800d06.jar" />
     </item>
     <item
-        jar="C:\Users\SagarkumarDave\Documents\MaterialDesignTest\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.0.1\jars\classes.jar"
+        jar="/Users/srswamy/Dev/Android/nhacks16/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-appindexing/8.1.0/jars/classes.jar"
         jumboMode="false"
         revision="23.0.1"
-        sha1="d86429b0f0b3f3cafbeb78dda1b9d89119ccb05d">
-        <dex dex="C:\Users\SagarkumarDave\Documents\MaterialDesignTest\app\build\intermediates\pre-dexed\debug\classes-3c24118976a122ee1e3b580defb409399e917864.jar" />
+        sha1="4477ea44f5ec5ad064022a22691732d7638ff197">
+        <dex dex="/Users/srswamy/Dev/Android/nhacks16/app/build/intermediates/pre-dexed/debug/classes-97b0cfcb92fdb1c2e0266d4df3000b6de9e73bb9.jar" />
     </item>
     <item
-        jar="C:\Users\SagarkumarDave\Documents\MaterialDesignTest\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.0\jars\classes.jar"
+        jar="/Users/srswamy/Dev/Android/nhacks16/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.2.0/jars/classes.jar"
         jumboMode="false"
         revision="23.0.1"
-        sha1="ddde541c289c8b816a8f8fd6c325d80788c522a6">
-        <dex dex="C:\Users\SagarkumarDave\Documents\MaterialDesignTest\app\build\intermediates\pre-dexed\debug\classes-16c80e572ea55386a7026a96df1b1c38d5d10b99.jar" />
+        sha1="e5f32fa48a3eb2de0c987025c11b6e3864b634d9">
+        <dex dex="/Users/srswamy/Dev/Android/nhacks16/app/build/intermediates/pre-dexed/debug/classes-a4b2ff97ca3310cb897f9e44b3f85112b37cd44a.jar" />
     </item>
     <item
-        jar="C:\Users\SagarkumarDave\Documents\MaterialDesignTest\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.0\jars\libs\internal_impl-23.1.0.jar"
+        jar="/Users/srswamy/Dev/Android/nhacks16/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.2.0/jars/libs/internal_impl-23.2.0.jar"
         jumboMode="false"
         revision="23.0.1"
-        sha1="8716243bf04bae8d6c9ca94d27b9a9be7236f0a3">
-        <dex dex="C:\Users\SagarkumarDave\Documents\MaterialDesignTest\app\build\intermediates\pre-dexed\debug\internal_impl-23.1.0-fcf03494091c7aef8bb235a8ead8c6baf6e13711.jar" />
+        sha1="6e239441500605809818997dd63b62a947195f8c">
+        <dex dex="/Users/srswamy/Dev/Android/nhacks16/app/build/intermediates/pre-dexed/debug/internal_impl-23.2.0-ed324a2b30823de5ab0e18de928a2f5957f89162.jar" />
     </item>
     <item
-        jar="C:\Users\SagarkumarDave\Documents\MaterialDesignTest\app\build\intermediates\exploded-aar\com.android.support\cardview-v7\23.1.0\jars\classes.jar"
+        jar="/Users/srswamy/Dev/Android/nhacks16/app/build/intermediates/exploded-aar/com.amulyakhare/com.amulyakhare.textdrawable/1.0.1/jars/classes.jar"
         jumboMode="false"
         revision="23.0.1"
-        sha1="d96886efea7cc74fbb3abd0e3b51d5638fc57be0">
-        <dex dex="C:\Users\SagarkumarDave\Documents\MaterialDesignTest\app\build\intermediates\pre-dexed\debug\classes-17cde1ce2f7574e0eca2f583f9de6e57a518c2a7.jar" />
+        sha1="d237556caead5b93d97e18a071059a2c0045978e">
+        <dex dex="/Users/srswamy/Dev/Android/nhacks16/app/build/intermediates/pre-dexed/debug/classes-5f7f7a2ee778640dc69a294a5e9a3ce3fb006373.jar" />
+    </item>
+    <item
+        jar="/Users/srswamy/Dev/Android/nhacks16/app/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/23.2.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="292a9fa091757208efa65e77eef63088247e51f3">
+        <dex dex="/Users/srswamy/Dev/Android/nhacks16/app/build/intermediates/pre-dexed/debug/classes-b9f964d41e07b988a7fc017d19e18fa3d81e53e1.jar" />
+    </item>
+    <item
+        jar="/Users/srswamy/.gradle/caches/modules-2/files-2.1/com.mcxiaoke.volley/library/1.0.15/9093a362d18c5f81f58e49d86dece57d9b6e1cb7/library-1.0.15.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="9093a362d18c5f81f58e49d86dece57d9b6e1cb7">
+        <dex dex="/Users/srswamy/Dev/Android/nhacks16/app/build/intermediates/pre-dexed/debug/library-1.0.15-bff4465aeee06b439c1a34942b387fa0a8021f3b.jar" />
+    </item>
+    <item
+        jar="/Users/srswamy/.gradle/caches/modules-2/files-2.1/com.parse.bolts/bolts-applinks/1.3.0/bc535105332645408ef5f1380215cc954b842178/bolts-applinks-1.3.0.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="bc535105332645408ef5f1380215cc954b842178">
+        <dex dex="/Users/srswamy/Dev/Android/nhacks16/app/build/intermediates/pre-dexed/debug/bolts-applinks-1.3.0-6f6d4d100be8eca2cfb0bf9219c5c5876274dc51.jar" />
+    </item>
+    <item
+        jar="/Users/srswamy/Dev/Android/nhacks16/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-ads/8.1.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="997773777cf3904c11d6764fe3b7668538220e49">
+        <dex dex="/Users/srswamy/Dev/Android/nhacks16/app/build/intermediates/pre-dexed/debug/classes-f06f269d3a1e4ddea0d211ef93afc753537d235b.jar" />
+    </item>
+    <item
+        jar="/Users/srswamy/Dev/Android/nhacks16/app/build/intermediates/exploded-aar/com.github.alamkanak/android-week-view/1.2.6/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="393eb85d65baa2c3702efdf699832498f8b51bf1">
+        <dex dex="/Users/srswamy/Dev/Android/nhacks16/app/build/intermediates/pre-dexed/debug/classes-c42a22b860d9b2857f7780359b2d409d94ad60ea.jar" />
+    </item>
+    <item
+        jar="/Users/srswamy/.gradle/caches/modules-2/files-2.1/com.parse.bolts/bolts-tasks/1.3.0/8a62fd16fcc1c06f284fc98e6cbded2a5af1dd4c/bolts-tasks-1.3.0.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="8a62fd16fcc1c06f284fc98e6cbded2a5af1dd4c">
+        <dex dex="/Users/srswamy/Dev/Android/nhacks16/app/build/intermediates/pre-dexed/debug/bolts-tasks-1.3.0-3d7ba9bf45a999356949050d946bbea195b73802.jar" />
+    </item>
+    <item
+        jar="/Users/srswamy/Dev/Android/nhacks16/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="6e3578f92f7462d1a935a1d36173e3bdd1234976">
+        <dex dex="/Users/srswamy/Dev/Android/nhacks16/app/build/intermediates/pre-dexed/debug/classes-deed74ab048640523aab5ead0485a257532ff16d.jar" />
+    </item>
+    <item
+        jar="/Users/srswamy/Dev/Android/nhacks16/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.10.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="bcb4a50f5e2c67b3e84441b1b2a239856776c9b8">
+        <dex dex="/Users/srswamy/Dev/Android/nhacks16/app/build/intermediates/pre-dexed/debug/classes-a27f62099c150d7e8cb12ba7e015d41092c7de25.jar" />
+    </item>
+    <item
+        jar="/Users/srswamy/Dev/Android/nhacks16/app/build/intermediates/exploded-aar/com.android.support/design/23.2.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="1aa5b025efe97f5006f5be16d6ca67c6c3c0c0d8">
+        <dex dex="/Users/srswamy/Dev/Android/nhacks16/app/build/intermediates/pre-dexed/debug/classes-30d8015de291b7e8dedebe84e74d592eeaa62499.jar" />
+    </item>
+    <item
+        jar="/Users/srswamy/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/23.2.0/support-annotations-23.2.0.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="c5bf571bb10462bd90e5419ade67793f71acbc87">
+        <dex dex="/Users/srswamy/Dev/Android/nhacks16/app/build/intermediates/pre-dexed/debug/support-annotations-23.2.0-c5887c37888e85a3d35540be366c967cfc7b2333.jar" />
+    </item>
+    <item
+        jar="/Users/srswamy/Dev/Android/nhacks16/app/build/intermediates/exploded-aar/com.android.support/animated-vector-drawable/23.2.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="8c108c22c99e794eff255bb34d2a461200c4cbb0">
+        <dex dex="/Users/srswamy/Dev/Android/nhacks16/app/build/intermediates/pre-dexed/debug/classes-324fef75835d121ec59d07dcecb17a32fb2dbab3.jar" />
+    </item>
+    <item
+        jar="/Users/srswamy/Dev/Android/nhacks16/app/build/intermediates/exploded-aar/com.android.support/cardview-v7/23.2.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="bc599eb9531da9d18bc58ec4eb0b1a1d895f6839">
+        <dex dex="/Users/srswamy/Dev/Android/nhacks16/app/build/intermediates/pre-dexed/debug/classes-64e142f4aa75a4b3e04703e2a3683868a4ab898b.jar" />
+    </item>
+    <item
+        jar="/Users/srswamy/Dev/Android/nhacks16/app/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/23.2.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="d4c936aa8c7d2522c82e3f1829c791d9e367f009">
+        <dex dex="/Users/srswamy/Dev/Android/nhacks16/app/build/intermediates/pre-dexed/debug/classes-0333be65e8cca61c4b1cd6b51e261ffa454d9b8c.jar" />
+    </item>
+    <item
+        jar="/Users/srswamy/.gradle/caches/modules-2/files-2.1/com.google.code.gson/gson/2.2.4/a60a5e993c98c864010053cb901b7eab25306568/gson-2.2.4.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="a60a5e993c98c864010053cb901b7eab25306568">
+        <dex dex="/Users/srswamy/Dev/Android/nhacks16/app/build/intermediates/pre-dexed/debug/gson-2.2.4-6d7b4efadbfd197e520198edb7412a9dfcf819c1.jar" />
     </item>
 
 </items>

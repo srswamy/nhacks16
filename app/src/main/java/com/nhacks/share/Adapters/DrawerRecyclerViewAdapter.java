@@ -16,6 +16,7 @@ import android.widget.TextView;
 
 import com.amulyakhare.textdrawable.TextDrawable;
 import com.nhacks.share.Fragments.AllBooksFragment;
+import com.nhacks.share.Fragments.MyBooksFragment;
 import com.nhacks.share.Fragments.MyFragment;
 import com.nhacks.share.Fragments.SampleFragment;
 import com.nhacks.share.Fragments.SlidingTabsFragment;
@@ -88,7 +89,7 @@ public class DrawerRecyclerViewAdapter extends RecyclerView.Adapter<DrawerRecycl
                     newFragment = AllBooksFragment.getInstance(0);
                     break;
                 case 1:
-                    newFragment = AllBooksFragment.getInstance(0);
+                    newFragment = MyBooksFragment.getInstance(0);
                     break;
                 case 2:
                     newFragment = AllBooksFragment.getInstance(0);
